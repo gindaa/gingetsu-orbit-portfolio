@@ -130,6 +130,19 @@ export const projectsData = {
     accentGradient: "linear-gradient(135deg, #10b981, #047857)",
     image: "",
     invertLogo: false
+  },
+  studious: {
+    title: "Studious",
+    subtitle: "Comprehensive college management and student information system.",
+    description: "Developed Studious, an integrated college management application designed to streamline academic operations. The platform provides robust tools for administrators and students to manage daily educational workflows.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Attendance Tracking:</strong> Engineered a reliable module for real-time attendance logging and academic reporting.</li><li><strong>Schedule Management:</strong> Built an intuitive class scheduling system for seamless course management.</li><li><strong>Mobile Integration:</strong> Expanded the enterprise web application into a native mobile client for on-the-go access.</li></ul>",
+    role: "Mobile Application Developer",
+    year: "2020",
+    tags: ["Education", "Management System", "Mobile App"],
+    techStack: ["Android", "Java", "REST APIs", "SQLite"],
+    liveLink: "",
+    accentGradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
+    image: "",
+    invertLogo: false
   }
 };
 
@@ -187,7 +200,7 @@ export const experiencesData = [
       "Mobile Translation: Engineered native Android clients for existing enterprise web applications, expanding platform accessibility for the corporate user base.",
       "Performance Optimization: Diagnosed and resolved core technical bottlenecks, improving application stability during critical internal beta testing phases."
     ],
-    relatedProjects: []
+    relatedProjects: ["studious"]
   },
   {
     id: "freelance",
