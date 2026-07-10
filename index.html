@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="view-transition" content="same-origin" />
+    <title>Gingetsu Orbit</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@300;400;500&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar glass">
+      <div class="nav-content">
+        <div class="logo">GINGETSU ORBIT</div>
+        <div id="nav-links-container" class="nav-links">
+          <a href="#work">Work</a>
+          <a href="#experience">Experience</a>
+          <a href="#about">About</a>
+        </div>
+        <style>
+          .celestial-hud-ui {
+            position: fixed;
+            top: 80px;
+            left: 20px;
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            padding: 12px 16px;
+            background: rgba(11,14,20,0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 8px;
+            border: 1px solid rgba(226,232,240,0.05);
+            width: auto;
+            min-width: 150px;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: 0.5px;
+          }
+          .celestial-hud-ui .hud-time {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .celestial-hud-ui .hud-time::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 8px 1px #fff;
+            animation: pulse-star 2.5s infinite;
+          }
+          @keyframes pulse-star {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+          }
+          .celestial-hud-ui .hud-date {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+          .celestial-hud-ui .hud-status {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: #fff;
+            margin-top: 6px;
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(226,232,240,0.08);
+            border-radius: 4px;
+            border: 1px solid rgba(226,232,240,0.1);
+            align-self: flex-start;
+          }
+          [data-theme="light"] .celestial-hud-ui {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: rgba(0, 0, 0, 0.1);
+          }
+          [data-theme="light"] .celestial-hud-ui .hud-time {
+            color: #0f172a;
+          }
+          [data-theme="light"] .celestial-hud-ui .hud-time::before {
+            background: #3b82f6;
+            box-shadow: 0 0 8px 1px #3b82f6;
+          }
+          [data-theme="light"] .celestial-hud-ui .hud-date {
+            color: #475569;
+          }
+          [data-theme="light"] .celestial-hud-ui .hud-status {
+            color: #0f172a;
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+          }
+          @media (max-width: 768px) {
+            .celestial-hud-ui {
+              top: 130px;
+              left: 10px;
+              padding: 10px 12px;
+            }
+            .celestial-hud-ui .hud-time {
+              font-size: 1.2rem;
+            }
+            .celestial-hud-ui .hud-date {
+              font-size: 0.65rem;
+            }
+          }
+        </style>
+        
+        <div class="celestial-hud-ui" id="celestial-hud">
+          <div class="hud-time" id="hud-time">00:00</div>
+          <div class="hud-date" id="hud-date">DATE</div>
+          <div class="hud-status" id="hud-moon"></div>
+        </div>
+        <div class="nav-controls">
+            <!-- Global Celestial Mode Toggle -->
+            <div class="global-view-toggle">
+              <button id="global-mode-classic" class="mode-btn active">Classic</button>
+              <button id="global-mode-universe" class="mode-btn">Celestial</button>
+            </div>
+            <button id="theme-toggle" class="icon-btn" aria-label="Toggle Theme">
+              <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="active"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+              <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Universe Fullscreen Overlay -->
+    <div id="universe-overlay" style="display: none;">
+      <canvas id="universe-canvas"></canvas>
+      
+      <!-- Constellation Exploration Status Indicator / Abort Button -->
+      <button id="exploration-status-indicator" class="hidden abort-btn" style="position: absolute; top: 6rem; left: 50%; transform: translateX(-50%); font-family: monospace; font-size: 0.85rem; letter-spacing: 3px; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; background: rgba(5,5,10,0.85); padding: 0.75rem 2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index: 200; text-transform: uppercase; backdrop-filter: blur(8px); cursor: pointer; transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--accent);" class="status-text">
+          <svg class="pulse" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l-4 9 4 11 4-11-4-9z"></path></svg>
+          EXPLORATION PROTOCOL ACTIVE
+        </div>
+        <div class="abort-text" style="font-size: 0.65rem; color: #ff5f56; opacity: 0; transition: opacity 0.3s; letter-spacing: 2px;">
+          [ CLICK TO ABORT / RETURN TO ORBIT ]
+        </div>
+      </button>
+
+      <!-- Constellation Exploration HUD -->
+      <div id="exploration-hud" class="hidden" style="position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); width: 450px; max-width: 90vw; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(12px); border-radius: 4px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.02); z-index: 200; pointer-events: auto; max-height: 80vh; display: flex; flex-direction: column; overflow: hidden; color: #fff;">
+        
+        <div class="expl-header" style="padding: 2.5rem 2.5rem 1.5rem 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); flex-shrink: 0;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+            <h2 id="expl-title" style="font-family: monospace; letter-spacing: 1px; color: #fff; font-size: 1.3rem; margin: 0; min-height: 1.5rem;"></h2>
+            <button id="explore-exit" style="background: none; border: none; color: var(--text-color); opacity: 0.5; cursor: pointer; font-size: 1.5rem; line-height: 1;">&times;</button>
+          </div>
+          <h3 id="expl-subtitle" style="font-size: 1rem; opacity: 0.8; margin-bottom: 0.25rem; font-family: monospace; color: var(--accent); min-height: 1.2rem;"></h3>
+          <span id="expl-date" style="font-size: 0.8rem; opacity: 0.5; font-family: monospace; letter-spacing: 1px; min-height: 1rem; display: block;"></span>
+        </div>
+        
+        <div class="expl-body" style="padding: 1.5rem 2.5rem; overflow-y: auto; flex: 1;">
+          <p id="expl-desc" style="margin-top: 0; line-height: 1.6; opacity: 0.7; font-size: 0.9rem; font-family: monospace;"></p>
+          
+          <h4 style="margin-top: 2rem; font-family: monospace; color: #fff; letter-spacing: 1px; font-size: 0.8rem; opacity: 0.6; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.25rem;">// RESPONSIBILITIES</h4>
+          <ul id="expl-responsibilities" style="margin-top: 1rem; margin-left: 1rem; font-size: 0.85rem; opacity: 0.7; line-height: 1.6; font-family: monospace; display: flex; flex-direction: column; gap: 0.75rem; list-style-type: square;"></ul>
+        </div>
+
+        <div class="expl-footer" style="padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; border-top: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; background: rgba(5,5,10,0.95);">
+          <button id="explore-prev" class="bridge-btn" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 2px;">&larr; Prev</button>
+          <button id="explore-next" class="bridge-btn primary glow" style="padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 2px;">Next &rarr;</button>
+        </div>
+      </div>
+
+      <!-- External Projects Folder Dock -->
+      <div id="exploration-projects-external" style="position: absolute; right: calc(2rem + 450px + 2rem); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 1.5rem; z-index: 200;"></div>
+
+      <div id="universe-tooltip" class="glass">
+        <h3 id="u-tt-title"></h3>
+        <h4 id="u-tt-subtitle" style="margin-top: 0; margin-bottom: 0.5rem; color: var(--accent); font-size: 0.9rem; font-weight: 500;"></h4>
+        <p id="u-tt-desc"></p>
+        <div id="u-tt-tags" class="tags"></div>
+        <span class="project-link" style="margin-top: 1rem; display: none;">Enter Orbit <span>&rarr;</span></span>
+      </div>
+    </div>
+
+    <!-- Main Content Wrapper (hides during Universe Mode) -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <header class="hero">
+        <div class="celestial-container">
+          <!-- Minimalist CSS Moon -->
+          <div class="moon"></div>
+        </div>
+        <div class="hero-content">
+          <h1>Crafting digital experiences</h1>
+          <p class="subtitle">A minimalist showcase of resilient architecture and elegant engineering.</p>
+          <a href="#work" class="btn primary-btn">View My Portfolio</a>
+        </div>
+      </header>
+
+      <!-- Projects Section -->
+      <section id="work" class="projects">
+        <div class="projects-header">
+          <h2>Selected Works</h2>
+        </div>
+
+        <!-- Bento Grid View -->
+        <div id="bento-view" class="project-grid">
+          
+
+
+          <!-- Project Card: OrionOrbit -->
+          <a href="/project.html?id=alpha" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #4b6cb7, #182848); position: relative;">
+              <img src="/orion_logo.png" alt="OrionOrbit" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 80%; width: auto; max-width: 90%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5;">
+            </div>
+            <div class="project-info">
+              <h3>OrionOrbit</h3>
+              <p>Multi-Tenant F&B ERP & Omnichannel POS</p>
+              <div class="tags">
+                <span>ERP</span>
+                <span>POS</span>
+                <span>SaaS</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: dbosscoffee -->
+          <a href="/project.html?id=dboss" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #d4af37, #8a6327); position: relative;">
+              <div style="position: absolute; inset: 0; background: url('/dboss_logo_transparent.png') center/50% no-repeat; filter: brightness(0) invert(1); opacity: 0.7;"></div>
+            </div>
+            <div class="project-info">
+              <h3>D'Boss Coffee</h3>
+              <p>A minimalist portfolio for a premium digital presence, blending high-end design with effortless storytelling.</p>
+              <div class="tags">
+                <span>F&B</span>
+                <span>QRIS</span>
+                <span>POS</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: tifakafe -->
+          <a href="/project.html?id=tifakafe" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #8B5A2B, #301b0d); position: relative;">
+              <div style="position: absolute; inset: 0; background: url('/tifakafe_logo.png') center/50% no-repeat; filter: brightness(0) invert(1); opacity: 0.7;"></div>
+            </div>
+            <div class="project-info">
+              <h3>Tifa Kafe</h3>
+              <p>A premium digital presence and VIP booking platform in Medan.</p>
+              <div class="tags">
+                <span>F&B</span>
+                <span>VIP</span>
+                <span>Web</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: Pegadaian Digital Syariah -->
+          <a href="/project.html?id=pegadaian" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #008f39, #004d1a); position: relative;">
+              <img src="/pegadaian_emblem_only.png" alt="Pegadaian Digital Syariah" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 75%; width: auto; max-width: 90%; object-fit: contain;">
+            </div>
+            <div class="project-info">
+              <h3>Pegadaian Digital Syariah</h3>
+              <p>Digital platform for Sharia-compliant pawnshop services and gold investments.</p>
+              <div class="tags">
+                <span>Fintech</span>
+                <span>Syariah</span>
+                <span>Gold</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: Tring! -->
+          <a href="/project.html?id=triing" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #ffffff, #e6f4ea); position: relative;">
+              <img src="/TRING_by_Pegadaian.svg" alt="Tring! Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain;">
+            </div>
+            <div class="project-info">
+              <h3>Tring! by Pegadaian</h3>
+              <p>A digital ecosystem and lifestyle application by Pegadaian.</p>
+              <div class="tags">
+                <span>Fintech</span>
+                <span>Lifestyle</span>
+                <span>App</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: Agen Pegadaian Syariah -->
+          <a href="/project.html?id=agen_pegadaian" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #10b981, #047857); position: relative;">
+              <img src="/pegadaian_emblem_only.png" alt="Agen Pegadaian Syariah" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 75%; width: auto; max-width: 90%; object-fit: contain;">
+            </div>
+            <div class="project-info">
+              <h3>Agen Pegadaian Syariah</h3>
+              <p>Platform for official Pegadaian Syariah agents to manage transactions.</p>
+              <div class="tags">
+                <span>Fintech</span>
+                <span>B2B</span>
+                <span>Dashboard</span>
+              </div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+          <!-- Project Card: BabyScheduler -->
+          <a href="/project.html?id=babysheduler" class="project-card glass">
+            <div class="project-image" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); position: relative;">
+              <img src="/babyscheduler_line_art.png" alt="BabyScheduler Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain;">
+            </div>
+            <div class="project-info">
+              <h3>BabyScheduler</h3>
+              <p>A smart scheduling and tracking platform for infant care routines.</p>
+              <div class="tags"><span>React</span><span>Web</span></div>
+              <span class="project-link">Visit Project <span>&rarr;</span></span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <div class="experience-layout-wrapper" id="experience-wrapper">
+          <div id="experience-timeline" class="timeline">
+            <!-- Timeline items will be injected here dynamically by main.js -->
+          </div>
+
+          <!-- Spacecraft Details Panel -->
+          <div id="exp-details" class="exp-details-panel glass space-craft-panel">
+            <button id="exp-details-close" class="hud-close-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="exp-details-header">
+              <h2 id="exp-details-role"></h2>
+              <h3 id="exp-details-company"></h3>
+              <span id="exp-details-date" class="date"></span>
+            </div>
+            <div class="exp-details-body">
+              <div class="hud-scanline"></div>
+              <h4 class="hud-section-title">Responsibilities</h4>
+              <ul id="exp-details-responsibilities"></ul>
+              
+              <h4 class="hud-section-title" style="margin-top: 1.5rem; display: none;" id="exp-details-projects-title">Key Projects</h4>
+              <div id="exp-details-projects" style="gap: 1rem; margin-top: 1rem;">
+                <!-- Mini project cards injected here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="about">
+        <div class="about-content glass">
+          <div class="about-grid">
+            <div class="about-left">
+              <h2 class="hud-section-title" style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--accent);">PROFILE // BAGINDA PRAKA GINTING</h2>
+              <h3 class="about-headline">Lead Mobile Engineer & IT System Architect</h3>
+              <p class="bio">
+                With 7+ years of experience, I specialize in architecting resilient applications, driving technical strategy, and delivering business-aligned solutions. From navigating complex legacy migrations to building high-performing engineering teams, my focus is always on engineering excellence.
+              </p>
+              <div class="social-links-minimal">
+                <a href="mailto:bagindapraka@gmail.com" class="social-btn-mini" aria-label="Email">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.728L12 16.64l-6.545-4.912v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+                </a>
+                <a href="https://wa.me/6287748476477" target="_blank" class="social-btn-mini" aria-label="WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                </a>
+                <a href="https://github.com/gindaa" target="_blank" class="social-btn-mini" aria-label="GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://linkedin.com/in/bagindapraka" target="_blank" class="social-btn-mini" aria-label="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+              </div>
+            </div>
+            
+            <div class="about-right">
+              <div class="systems-status-card glass">
+                <h4 class="hud-section-title" style="margin-bottom: 1.5rem; text-align: left;">SYSTEMS STATUS</h4>
+                <div class="systems-list">
+                  <div class="system-item"><span class="pulse-dot"></span> Go</div>
+                  <div class="system-item"><span class="pulse-dot"></span> React / Next.js</div>
+                  <div class="system-item"><span class="pulse-dot"></span> Kotlin (Android)</div>
+                  <div class="system-item"><span class="pulse-dot"></span> SwiftUI (iOS)</div>
+                  <div class="system-item"><span class="pulse-dot"></span> Java</div>
+                  <div class="system-item"><span class="pulse-dot"></span> CI/CD & Automation</div>
+                  <div class="system-item"><span class="pulse-dot"></span> System Architecture</div>
+                  <div class="system-item"><span class="pulse-dot"></span> NoSQL</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer (Inside main content wrapper) -->
+      <footer id="main-footer" style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem;">
+        <p>&copy; 2026 Gingetsu Orbit. All rights reserved.</p>
+      </footer>
+    </main>
+
+    <!-- Hyperjump Flash Overlay -->
+    <div id="hyperjump-flash"></div>
+
+    <!-- Hyperjump Confirmation Overlay -->
+    <div id="hyperjump-confirm" class="hidden">
+      <div class="confirm-box glass">
+        <h2 class="blink-text text-red" style="color: #ff5f56; font-family: monospace; letter-spacing: 2px;">WARNING: SYSTEM OVERRIDE</h2>
+        <p style="font-family: monospace; margin: 1.5rem 0;">You are about to breach orbit and board the Command Bridge.</p>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 2.5rem;">
+          <button id="engage-warp-btn" class="bridge-btn primary glow pulse-urgent" style="font-size: 1.1rem; padding: 1rem 3rem; letter-spacing: 1px; color: #fff !important;">ENGAGE HYPERDRIVE</button>
+          <button id="cancel-warp-btn" style="background: transparent; border: none; color: rgba(255,255,255,0.5); font-family: monospace; font-size: 0.9rem; cursor: pointer; text-decoration: underline; margin-top: 0.5rem; transition: color 0.2s;">Abort Sequence</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ship's Bridge Overlay (Interactive Resume) -->
+    <div id="ship-bridge" class="hidden">
+      <div class="bridge-container">
+        <header class="bridge-header" style="justify-content: space-between; align-items: center; display: flex;">
+          <h2>SHIP's BRIDGE // COMMAND TERMINAL</h2>
+          <div style="display: flex; gap: 1rem;">
+            <button id="bridge-close-orbit-btn" class="bridge-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.2);">Return to Orbit <span>&times;</span></button>
+            <button id="bridge-close-btn" class="bridge-btn primary glow pulse">Initiate Constellation Exploration <span>&rarr;</span></button>
+          </div>
+        </header>
+        
+        <div class="bridge-content">
+          <!-- Terminal Section -->
+          <div class="bridge-panel terminal-panel">
+            <div class="terminal-header">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="term-title">sys_log_v2.1</span>
+            </div>
+            <div class="terminal-body" id="bridge-terminal-text">
+              <!-- JS will type text here -->
+            </div>
+            <span class="blinking-cursor">_</span>
+          </div>
+
+          <!-- Skill Matrix Section -->
+          <div class="bridge-panel matrix-panel">
+            <h3 class="panel-title">SYSTEM MATRIX</h3>
+            <div class="matrix-grid">
+              <div class="matrix-item tooltip-trigger" data-desc="Modern Fullstack Framework">Next.js</div>
+              <div class="matrix-item tooltip-trigger" data-desc="High-Performance Systems">Go</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Enterprise Architecture">Spring Boot</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Distributed Systems">Microservices</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Offline-First Data Sync">CouchDB</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Mobile Engineering">Native Android</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Mobile Engineering">iOS</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Enterprise Kubernetes">OpenShift</div>
+              <div class="matrix-item tooltip-trigger" data-desc="Advanced Relational DB">PostgreSQL</div>
+            </div>
+            <div class="bridge-actions">
+              <a href="/Baginda_Praka_Ginting_Resume.pdf" id="download-dossier-btn" download="Baginda_Praka_Ginting_Resume.pdf" class="bridge-btn primary glow">Download Technical Dossier</a>
+            </div>
+            
+            <!-- Download HUD -->
+            <div id="download-hud" class="hidden">
+              <div class="hud-scanner"></div>
+              <div class="hud-text" id="hud-status-text">INITIALIZING DOWNLOAD SEQUENCE...</div>
+              <div class="hud-progress-bar"><div class="hud-progress-fill" id="hud-progress"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+    <script type="module" src="/universe.js"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "gingetsuorbit",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^8.1.1"
+  },
+  "dependencies": {
+    "jsdom": "^29.1.1",
+    "puppeteer": "^25.3.0"
+  }
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <g transform="translate(0, 0)">
+    <!-- Outer light green broken ring -->
+    <path d="M 220 50 A 180 180 0 1 1 70 280" fill="none" stroke="#c9e030" stroke-width="22" stroke-linecap="butt"/>
+    <path d="M 90 390 A 180 180 0 0 0 430 140" fill="none" stroke="#c9e030" stroke-width="22" stroke-linecap="butt"/>
+
+    <!-- Inner thin dark-green ring -->
+    <circle cx="250" cy="250" r="145" fill="none" stroke="#083022" stroke-width="10"/>
+
+    <!-- Inner solid green circle -->
+    <circle cx="250" cy="250" r="135" fill="#13a354" />
+    
+    <!-- Scales of Justice -->
+    <path d="M 160 190 Q 250 160 340 190" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+    
+    <polygon points="175,195 135,280 215,280" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M 130 280 Q 175 310 220 280 Z" fill="#ffffff"/>
+    
+    <polygon points="325,195 285,280 365,280" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M 280 280 Q 325 310 370 280 Z" fill="#ffffff"/>
+  </g>
+</svg>

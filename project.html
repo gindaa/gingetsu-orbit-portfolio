@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="view-transition" content="same-origin" />
+    <title>Gingetsu Orbit</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css?v=3" />
+    <style>
+      .app-store-btn {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 3.2rem;
+        height: 3.2rem;
+        border: 1.5px solid var(--border-color, rgba(0, 0, 0, 0.1));
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text-main);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+      }
+      [data-theme="dark"] .app-store-btn {
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+      }
+      .app-store-btn:hover {
+        transform: scale(1.05);
+        border-color: var(--text-main);
+        background: var(--card-hover);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      }
+      @keyframes play-bounce {
+        0% { transform: scale(1); }
+        40% { transform: scale(0.85); }
+        100% { transform: scale(1); }
+      }
+      .play-store-svg {
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      #project-playstore-link:hover .play-store-svg {
+        animation: play-bounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      .play-store-svg path {
+        fill: var(--text-main);
+        transition: fill 0.3s ease;
+      }
+      #project-playstore-link:hover .play-blue { fill: #4285F4 !important; transition-delay: 0s; }
+      #project-playstore-link:hover .play-red { fill: #EA4335 !important; transition-delay: 0.05s; }
+      #project-playstore-link:hover .play-green { fill: #34A853 !important; transition-delay: 0.1s; }
+      #project-playstore-link:hover .play-yellow { fill: #FBBC04 !important; transition-delay: 0.15s; }
+      
+      .apple-svg {
+        transition: filter 0.3s ease, transform 0.3s ease;
+      }
+      #project-ios-link:hover .apple-svg {
+        filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1)) !important;
+        transform: scale(1.1);
+      }
+      
+      /* Morphing Text Blur Animation (Crisp Font Fallback) */
+      .morph-wrapper {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+      }
+      .morph-original, .morph-hover {
+        grid-area: 1 / 1;
+        transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+        will-change: opacity, transform, filter;
+      }
+      .morph-original {
+        opacity: 1;
+        filter: blur(0px);
+        transform: scale(1);
+      }
+      .morph-hover {
+        opacity: 0;
+        filter: blur(4px);
+        pointer-events: none;
+        transform: scale(0.9);
+      }
+      .primary-btn:hover .morph-original {
+        opacity: 0;
+        filter: blur(4px);
+        transform: scale(1.1);
+      }
+      .primary-btn:hover .morph-hover {
+        opacity: 1;
+        filter: blur(0px);
+        transform: scale(1);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Ambient Orbs -->
+    <div class="orbs-container">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
+    <!-- Stars Background -->
+    <div class="stars-container" id="stars-container"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar glass">
+      <div class="nav-content">
+        <div class="logo">GINGETSU ORBIT</div>
+        <div class="nav-links">
+          <!-- Back button using secondary button style -->
+          <a href="/" style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); text-decoration: none; font-weight: 500; font-size: 0.9rem;">
+            <span>&larr;</span> Back to Home
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Project Details Content -->
+    <main class="project-main">
+      <div class="glass" style="max-width: 800px; width: 90%; border-radius: 20px; overflow: hidden; padding-bottom: 2rem;">
+        <!-- Banner Image Placeholder -->
+        <div id="project-banner" style="width: 100%; height: 250px; display: flex; justify-content: center; align-items: center; background: var(--glass-border);">
+           <h2 id="banner-text" style="color: rgba(255,255,255,0.8); letter-spacing: 0.1em;">Loading...</h2>
+        </div>
+
+        <div style="padding: 3rem 2rem;">
+          <h1 id="project-title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">...</h1>
+          <p id="project-subtitle" style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem;">...</p>
+          
+          <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 2.5rem; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 1.5rem 0;">
+            <div>
+              <span style="display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">Role</span>
+              <strong id="project-role">...</strong>
+            </div>
+            <div>
+              <span style="display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">Year</span>
+              <strong id="project-year">...</strong>
+            </div>
+            <div style="flex-grow: 1;" id="tech-stack-container">
+              <span style="display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;">Tech Stack</span>
+              <div id="project-tech" class="skills" style="gap: 0.5rem;">
+                 <!-- Filled by JS -->
+              </div>
+            </div>
+          </div>
+
+          <div id="project-description" style="line-height: 1.8; color: var(--text-muted); margin-bottom: 3rem;">
+            ...
+          </div>
+          
+          <div id="architecture-section" style="display: none; margin-bottom: 3rem;">
+            <div id="architecture-toggle" style="display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; color: var(--text-muted); transition: color 0.4s ease;" onmouseover="this.style.color='var(--text-main)'" onmouseout="this.style.color='var(--text-muted)'">
+              <span id="architecture-toggle-icon" style="transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); font-size: 0.7rem;">&#9660;</span>
+              <span style="font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase;">System Architecture</span>
+            </div>
+            <div id="architecture-wrapper" style="display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease; opacity: 1;">
+              <div style="overflow: hidden;">
+                <div id="project-architecture" class="architecture-diagram" style="margin-top: 1.5rem; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); transform: translateY(0);"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="tags-container" style="margin-bottom: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
+            <span style="display: block; font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem;">Project Domains & Tags</span>
+            <div id="project-tags" class="tags" style="gap: 0.5rem; justify-content: flex-start; margin-top: 0;">
+               <!-- Filled by JS -->
+            </div>
+          </div>
+
+          <div id="project-links-container" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+            <a href="#" id="project-live-link" target="_blank" class="btn primary-btn" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+              <span id="project-live-link-text">Visit Live Site</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+            <a href="#" id="project-playstore-link" target="_blank" class="app-store-btn" aria-label="Google Play Store">
+              <svg width="24" height="24" viewBox="0 0 466 511.98" class="play-store-svg">
+                <g fill-rule="nonzero">
+                  <path class="play-red" d="M199.9 237.8 1.4 470.17c7.22 24.57 30.16 41.81 55.8 41.81 11.16 0 20.93-2.79 29.3-8.37l244.16-139.46L199.9 237.8z"/>
+                  <path class="play-yellow" d="m433.91 205.1-104.65-60-111.61 110.22 113.01 108.83 104.64-58.6c18.14-9.77 30.7-29.3 30.7-50.23-1.4-20.93-13.95-40.46-32.09-50.22z"/>
+                  <path class="play-green" d="M199.42 273.45 329.27 145.1 87.9 8.37C79.53 2.79 68.36 0 57.2 0 30.7 0 6.98 18.14 1.4 41.86l198.02 231.59z"/>
+                  <path class="play-blue" d="M1.39 41.86C0 46.04 0 51.63 0 57.2v397.64c0 5.57 0 9.76 1.4 15.34l216.27-214.86L1.39 41.86z"/>
+                </g>
+              </svg>
+            </a>
+            <a href="#" id="project-ios-link" target="_blank" class="app-store-btn" aria-label="Apple App Store">
+              <svg width="24" height="24" viewBox="0 0 384 512" fill="currentColor" class="apple-svg">
+                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Baginda Praka Ginting. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="/project.js"></script>
+    <script type="module" src="/transition.js"></script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

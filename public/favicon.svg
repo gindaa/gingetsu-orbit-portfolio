@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Main Moon Body -->
+  <circle cx="60" cy="60" r="60" fill="#e2e8f0" />
+  
+  <!-- Craters -->
+  <circle cx="34" cy="34" r="10" fill="rgba(0,0,0,0.2)" />
+  <circle cx="64" cy="74" r="15" fill="rgba(0,0,0,0.15)" />
+  <circle cx="84" cy="24" r="8" fill="rgba(0,0,0,0.15)" />
+</svg>

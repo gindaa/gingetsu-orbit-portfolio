@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Outer light green broken ring -->
+  <path d="M 210 40 A 210 210 0 1 1 40 290" fill="none" stroke="#c9e030" stroke-width="24" stroke-linecap="butt"/>
+  <path d="M 80 400 A 210 210 0 0 0 460 210" fill="none" stroke="#c9e030" stroke-width="24" stroke-linecap="butt"/>
+
+  <!-- Inner thin dark-green ring (which actually serves as a gap/border, so let's use a subtle outline or just skip it if it's transparent in the original, but the original had a ring) -->
+  <circle cx="250" cy="250" r="165" fill="none" stroke="#083022" stroke-width="14"/>
+
+  <!-- Inner solid green circle -->
+  <circle cx="250" cy="250" r="145" fill="#13a354" />
+  
+  <!-- Scales of Justice -->
+  <!-- Top curved beam -->
+  <path d="M 160 200 Q 250 170 340 200" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Left Scale Strings -->
+  <polygon points="170,205 130,290 210,290" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Left Scale Pan -->
+  <path d="M 125 290 Q 170 320 215 290 Z" fill="#ffffff"/>
+  
+  <!-- Right Scale Strings -->
+  <polygon points="330,205 290,290 370,290" fill="none" stroke="#ffffff" stroke-width="6" stroke-linejoin="round"/>
+  <!-- Right Scale Pan -->
+  <path d="M 285 290 Q 330 320 375 290 Z" fill="#ffffff"/>
+</svg>
