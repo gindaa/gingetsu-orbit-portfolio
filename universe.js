@@ -962,10 +962,7 @@ document.addEventListener('DOMContentLoaded', () => {
             folder.style.transform = 'translateX(20px)';
             folder.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             
-            let imgFilter = proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;';
-            if (proj.blendScreen) {
-              imgFilter = 'mix-blend-mode: screen; opacity: 0.9;';
-            }
+            const imgFilter = proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;';
             const logoPath = proj.image || '/fallback_logo.png';
             
             folder.innerHTML = `
