@@ -124,6 +124,7 @@ export const projectsData = {
     description: "Consulted on and contributed to the development of Soil Tracker, a platform designed for monitoring and managing soil metrics.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>System Architecture:</strong> Provided technical consulting to shape the project's foundation.</li><li><strong>Open Source:</strong> Available on GitHub for community collaboration.</li></ul>",
     role: "IT Consultant",
     year: "2025",
+    tags: ["Transport", "Tracker", "ERP"],
     techStack: ["Git", "System Architecture", "Web Technologies"],
     liveLink: "https://github.com/gindaa/soil-tracker",
     accentGradient: "linear-gradient(135deg, #10b981, #047857)",
