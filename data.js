@@ -128,8 +128,8 @@ export const projectsData = {
     techStack: ["Git", "System Architecture", "Web Technologies"],
     liveLink: "https://github.com/gindaa/soil-tracker",
     accentGradient: "linear-gradient(135deg, #10b981, #047857)",
-    image: "",
-    invertLogo: false
+    image: "/soil_tracker_logo.jpg",
+    blendScreen: true
   },
   studious: {
     title: "Studious",
@@ -141,8 +141,8 @@ export const projectsData = {
     techStack: ["Android", "Java", "REST APIs", "SQLite"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
-    image: "",
-    invertLogo: false
+    image: "/studious_logo.jpg",
+    blendScreen: true
   },
   smarttb: {
     title: "SmartTB",
@@ -154,8 +154,8 @@ export const projectsData = {
     techStack: ["Android", "Java", "SQLite", "REST APIs"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #ef4444, #991b1b)",
-    image: "",
-    invertLogo: false
+    image: "/smarttb_logo.jpg",
+    blendScreen: true
   }
 };
 
