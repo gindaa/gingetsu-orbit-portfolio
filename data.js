@@ -143,6 +143,19 @@ export const projectsData = {
     accentGradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
     image: "",
     invertLogo: false
+  },
+  smarttb: {
+    title: "SmartTB",
+    subtitle: "Tuberculosis data collection app for Nias Regency.",
+    description: "Developed SmartTB, a dedicated data collection application designed to track and manage tuberculosis cases in the Nias Regency. The app empowers field workers to seamlessly gather patient data even in remote areas with poor connectivity.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Offline-First Architecture:</strong> Built a robust local caching system that allows users to collect data without internet access.</li><li><strong>Auto-Synchronization:</strong> Engineered background services that automatically push cached data to the central server the moment a connection is re-established.</li><li><strong>Targeted Deployment:</strong> Specifically tailored for healthcare workers operating in Nias Regency.</li></ul>",
+    role: "Android Developer",
+    year: "2019",
+    tags: ["Healthcare", "Offline-First", "Data Collection"],
+    techStack: ["Android", "Java", "SQLite", "REST APIs"],
+    liveLink: "",
+    accentGradient: "linear-gradient(135deg, #ef4444, #991b1b)",
+    image: "",
+    invertLogo: false
   }
 };
 
@@ -211,6 +224,6 @@ export const experiencesData = [
     responsibilities: [
       "Custom Solutions: Architected and delivered bespoke Android applications for various independent clients, managing the full software development lifecycle from initial requirements gathering to market deployment."
     ],
-    relatedProjects: []
+    relatedProjects: ["smarttb"]
   }
 ];
