@@ -291,6 +291,17 @@ a:hover {
   color: var(--text-main);
 }
 
+.secondary-btn {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--text-main);
+}
+
+.secondary-btn:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
+}
+
 /* Projects Section */
 .projects {
   max-width: 1200px;
