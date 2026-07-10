@@ -117,6 +117,18 @@ export const projectsData = {
     accentGradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
     image: "/babyscheduler_line_art.png",
     invertLogo: false
+  },
+  soiltracker: {
+    title: "Soil Tracker",
+    subtitle: "Agricultural tracking and management system.",
+    description: "Consulted on and contributed to the development of Soil Tracker, a platform designed for monitoring and managing soil metrics.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>System Architecture:</strong> Provided technical consulting to shape the project's foundation.</li><li><strong>Open Source:</strong> Available on GitHub for community collaboration.</li></ul>",
+    role: "IT Consultant",
+    year: "2025",
+    techStack: ["Git", "System Architecture", "Web Technologies"],
+    liveLink: "https://github.com/gindaa/soil-tracker",
+    accentGradient: "linear-gradient(135deg, #10b981, #047857)",
+    image: "",
+    invertLogo: false
   }
 };
 
@@ -133,7 +145,7 @@ export const experiencesData = [
       "Offline-First Data Synchronization: Designed and implemented a resilient, offline-first data synchronization layer leveraging CouchDB and PouchDB, guaranteeing continuous operational uptime and zero data loss during network disruptions.",
       "Operational Problem Solving: Diagnosed field-level user bottlenecks and engineered targeted operational fixes, directly translating on-the-ground feedback into actionable system improvements to streamline adoption."
     ],
-    relatedProjects: ["alpha", "dboss", "tifakafe", "babysheduler"]
+    relatedProjects: ["alpha", "dboss", "tifakafe", "babysheduler", "soiltracker"]
   },
   {
     id: "lead_pegadaian",
