@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
           scrambleText(ttDesc, "7+ years architecting resilient apps, navigating complex legacy migrations, and building high-performing engineering teams.", false, 500);
           
           ttTags.innerHTML = '';
-          const coreSkills = ['Go', 'React', 'Kotlin', 'SwiftUI', 'AWS', 'System Architecture', 'CI/CD'];
+          const coreSkills = ['Go', 'React', 'Kotlin', 'Swift', 'AWS', 'System Architecture', 'CI/CD'];
           coreSkills.forEach(tag => {
             const s = document.createElement('span');
             s.textContent = tag;
