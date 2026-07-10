@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const universeData = {
-    core: { x: 0, y: 0, title: "Baginda Praka Ginting", desc: "Lead Mobile Engineer & Full-Stack Consultant", skills: [] }
+    core: { x: 0, y: 0, title: "Baginda Praka Ginting", desc: "Lead Mobile Engineer & IT Solutions Architect", skills: [] }
   };
 
   // Parse Skills
@@ -714,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ttSubtitle.style.display = 'block';
           
           scrambleText(ttTitle, "CORE IDENTITY // GINGETSU ORBIT", false, 0);
-          scrambleText(ttSubtitle, "Lead Mobile Engineer & IT System Architect", false, 250);
+          scrambleText(ttSubtitle, "Lead Mobile Engineer & IT Solutions Architect", false, 250);
           scrambleText(ttDesc, "7+ years architecting resilient apps, navigating complex legacy migrations, and building high-performing engineering teams.", false, 500);
           
           ttTags.innerHTML = '';
@@ -1038,7 +1038,7 @@ document.addEventListener('DOMContentLoaded', () => {
       "> ROOT ACCESS GRANTED.",
       "",
       "> LOADING DOSSIER: BAGINDA PRAKA GINTING",
-      "> ROLE: LEAD MOBILE ENGINEER & SYSTEM ARCHITECT",
+      "> ROLE: LEAD MOBILE ENGINEER & IT SOLUTIONS ARCHITECT",
       "> EXP: 7+ YEARS IN HIGH-AVAILABILITY ENVIRONMENTS",
       "",
       "> ACCOMPLISHMENTS:",
