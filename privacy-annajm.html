@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebijakan Privasi - An-Najm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-family: 'Outfit', sans-serif;
+    }
+    .privacy-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--glass-border);
+      padding-bottom: 0.5rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+    }
+    p, ul, li {
+      color: var(--text-muted);
+    }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .meta-date {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      border: 1px solid var(--glass-border);
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-main);
+    }
+    td {
+      color: var(--text-muted);
+    }
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="privacy-container glass">
+    <a href="/" class="back-link">← Kembali ke Beranda</a>
+    
+    <h1>Kebijakan Privasi — An-Najm, Teman Belajar</h1>
+    <span class="meta-date">Terakhir diperbarui: 30 Agustus 2026</span>
+    
+    <p>Aplikasi An-Najm ("Aplikasi") dikembangkan oleh GingetsuOrbit ("Kami"). Kami menghargai privasi Anda dan berkomitmen melindungi data pribadi Anda. Kebijakan Privasi ini menjelaskan jenis data apa yang kami kumpulkan, bagaimana kami menggunakannya, dan hak-hak yang Anda miliki atas data tersebut.</p>
+
+    <h2>1. Data yang Kami Kumpulkan</h2>
+    
+    <h3>a. Data Lokasi (Opsional, dengan Izin Anda)</h3>
+    <p>Kami meminta akses lokasi perangkat Anda hanya untuk:</p>
+    <ul>
+      <li>Menghitung waktu sholat yang akurat berdasarkan koordinat geografis Anda.</li>
+      <li>Mendeteksi kondisi cuaca lokal untuk mengirimkan pengingat doa saat hujan.</li>
+    </ul>
+    <p>Data lokasi diproses secara lokal di perangkat Anda dan tidak dikirim ke server kami. Kami hanya mengirimkan koordinat ke layanan cuaca pihak ketiga (Open-Meteo) dalam format anonim tanpa identifikasi pengguna.</p>
+    
+    <h3>b. Data Akun (Opsional)</h3>
+    <p>Jika Anda memilih untuk masuk menggunakan Google Sign-In, kami menerima:</p>
+    <ul>
+      <li>Nama lengkap</li>
+      <li>Alamat email</li>
+      <li>Foto profil</li>
+    </ul>
+    <p>Data ini disimpan di Supabase (penyedia autentikasi kami) dan hanya digunakan untuk menampilkan identitas Anda di halaman profil serta menyinkronkan data di antara perangkat.</p>
+    
+    <h3>c. Data Refleksi Emosi</h3>
+    <p>Jika Anda menggunakan fitur Semantic Mood Check-in, tag emosi harian Anda (misalnya "Bersyukur", "Gelisah") disimpan di:</p>
+    <ul>
+      <li>Lokal di perangkat (untuk pengguna tamu/offline)</li>
+      <li>Supabase (untuk pengguna yang masuk dengan akun Google, agar tersinkronisasi)</li>
+    </ul>
+    <p>Data ini digunakan semata-mata untuk menampilkan grafik spektrum emosi pribadi Anda dan membantu kami menampilkan konten Al-Qur'an yang relevan.</p>
+    
+    <h3>d. Preferensi Lokal</h3>
+    <p>Pengaturan seperti pilihan qari (audio), sumber tafsir, waktu pengingat, dan progress terakhir membaca Al-Qur'an disimpan secara lokal di perangkat menggunakan SharedPreferences dan database SQLite. Data ini tidak pernah dikirim ke server manapun.</p>
+    
+    <h3>e. Notifikasi</h3>
+    <p>Kami menggunakan notifikasi lokal (bukan push notification dari server) untuk:</p>
+    <ul>
+      <li>Pengingat harian membaca Al-Qur'an</li>
+      <li>Pengingat waktu sholat</li>
+      <li>Pengingat kontekstual saat hujan</li>
+    </ul>
+    <p>Anda dapat menonaktifkan notifikasi kapan saja melalui pengaturan perangkat Anda.</p>
+
+    <h2>2. Data yang TIDAK Kami Kumpulkan</h2>
+    <ul>
+      <li>❌ Kami tidak mengumpulkan data analitik atau telemetri.</li>
+      <li>❌ Kami tidak melacak aktivitas browsing atau penggunaan aplikasi Anda.</li>
+      <li>❌ Kami tidak menggunakan cookies.</li>
+      <li>❌ Kami tidak menjalankan iklan atau layanan periklanan apapun.</li>
+      <li>❌ Kami tidak menjual, menyewakan, atau membagikan data Anda kepada pihak ketiga untuk tujuan komersial.</li>
+    </ul>
+
+    <h2>3. Layanan Pihak Ketiga</h2>
+    <p>Aplikasi ini menggunakan layanan pihak ketiga berikut:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Layanan</th>
+          <th>Tujuan</th>
+          <th>Kebijakan Privasi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Supabase</td>
+          <td>Autentikasi pengguna & penyimpanan data refleksi emosi</td>
+          <td><a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td>Google Sign-In</td>
+          <td>Login opsional dengan akun Google</td>
+          <td><a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td>Open-Meteo</td>
+          <td>Data cuaca lokal untuk pengingat doa saat hujan</td>
+          <td><a href="https://open-meteo.com/en/terms" target="_blank">open-meteo.com/en/terms</a></td>
+        </tr>
+        <tr>
+          <td>EveryAyah</td>
+          <td>Streaming audio murattal Al-Qur'an</td>
+          <td><a href="https://everyayah.com/" target="_blank">everyayah.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>4. Keamanan Data</h2>
+    <ul>
+      <li>Semua komunikasi jaringan menggunakan HTTPS/TLS yang terenkripsi.</li>
+      <li>Database lokal disimpan dalam sandbox aplikasi yang dilindungi oleh sistem operasi perangkat Anda.</li>
+      <li>Kami tidak menyimpan kata sandi — autentikasi ditangani sepenuhnya oleh Google dan Supabase menggunakan token OAuth yang aman.</li>
+    </ul>
+
+    <h2>5. Hak Anda</h2>
+    <h3>Hapus Akun & Data</h3>
+    <p>Anda dapat menghapus seluruh data Anda kapan saja langsung dari dalam aplikasi:</p>
+    <ol style="margin-left: 1.5rem; color: var(--text-muted);">
+      <li>Buka tab Profil</li>
+      <li>Gulir ke bagian Akun & Privasi</li>
+      <li>Ketuk "Hapus Akun & Data"</li>
+    </ol>
+    <p>Tindakan ini akan menghapus secara permanen semua data riwayat emosi Anda dari server kami dan memutuskan sesi akun Google Anda dari An-Najm. Tindakan ini tidak dapat dibatalkan.</p>
+    
+    <h3>Akses & Portabilitas</h3>
+    <p>Anda dapat melihat seluruh data refleksi emosi Anda di halaman Profil (Grafik Spektrum Emosi). Jika Anda membutuhkan salinan data mentah Anda, silakan hubungi kami.</p>
+
+    <h2>6. Anak di Bawah Umur</h2>
+    <p>Aplikasi ini sesuai untuk semua usia. Kami tidak secara sengaja mengumpulkan data pribadi dari anak di bawah 13 tahun tanpa persetujuan orang tua. Jika Anda orang tua/wali dan mengetahui bahwa anak Anda telah memberikan data pribadi kepada kami, silakan hubungi kami untuk penghapusan.</p>
+
+    <h2>7. Perubahan Kebijakan</h2>
+    <p>Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu. Perubahan akan diumumkan melalui pembaruan aplikasi dan halaman ini. Tanggal "Terakhir diperbarui" di bagian atas akan selalu mencerminkan versi terbaru.</p>
+
+    <h2>8. Hubungi Kami</h2>
+    <p>Jika Anda memiliki pertanyaan, kekhawatiran, atau permintaan terkait privasi, silakan hubungi kami di:</p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:gin@gingetsuorbit.com">gin@gingetsuorbit.com</a></li>
+      <li><strong>Pengembang:</strong> GingetsuOrbit</li>
+      <li><strong>Website:</strong> <a href="https://gingetsuorbit.id/">gingetsuorbit.id</a></li>
+    </ul>
+    <p><em>Kebijakan ini berlaku untuk aplikasi An-Najm versi 1.0.0 dan seterusnya, tersedia di Google Play Store dan Apple App Store.</em></p>
+  </div>
+</body>
+</html>
