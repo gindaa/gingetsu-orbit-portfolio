@@ -962,6 +962,33 @@ a:hover {
   box-shadow: 0 5px 15px var(--moon-glow);
 }
 
+.social-separator {
+  display: inline-block;
+  width: 1px;
+  height: 24px;
+  background: var(--glass-border);
+  margin: 0 4px;
+  align-self: center;
+}
+
+.trakteer-btn {
+  width: auto;
+  padding: 0 14px;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.trakteer-btn:hover {
+  background: var(--accent);
+  color: var(--bg-color);
+  border-color: var(--accent);
+}
+
 /* Footer */
 footer {
   text-align: center;
