@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback & Request — An-Najm</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text-main); }
+
+    .app-header {
+      margin-bottom: 2rem;
+    }
+    .app-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .app-header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 0 0 0.4rem;
+    }
+    .app-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Card */
+    .form-card {
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Platform toggle */
+    .platform-toggle {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .platform-toggle input[type="radio"] { display: none; }
+    .platform-toggle label {
+      flex: 1;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      border-radius: 30px;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+    .platform-toggle input[type="radio"]:checked + label {
+      background: var(--accent);
+      color: var(--bg-color);
+      border-color: var(--accent);
+    }
+    .platform-toggle label:hover {
+      border-color: var(--accent);
+      color: var(--text-main);
+    }
+
+    /* Form fields */
+    .field {
+      margin-bottom: 1.2rem;
+    }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .field label .optional {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin-left: 0.3rem;
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      resize: none;
+    }
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(var(--accent-rgb, 100, 150, 255), 0.12);
+    }
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: var(--text-muted);
+      opacity: 0.5;
+    }
+    .field textarea { min-height: 130px; line-height: 1.6; }
+
+    /* Submit btn */
+    .submit-btn {
+      width: 100%;
+      padding: 0.85rem;
+      border-radius: 30px;
+      border: none;
+      background: var(--text-main);
+      color: var(--bg-color);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+    .submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* Success state */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    .success-msg .checkmark {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .success-msg h3 { margin: 0 0 0.5rem; }
+    .success-msg p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+    /* Support card */
+    .support-card {
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .support-card-text p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .support-card-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      margin-bottom: 0.2rem;
+    }
+    .trakteer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 30px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+    .trakteer-link:hover {
+      background: var(--accent);
+      color: var(--bg-color);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      .support-card { flex-direction: column; align-items: flex-start; }
+      .trakteer-link { align-self: flex-start; }
+      body { align-items: flex-start; padding-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <a href="/" class="back-link">← Gingetsu Orbit</a>
+
+    <div class="app-header">
+      <p class="app-label">An-Najm · Teman Belajar</p>
+      <h1>Feedback & Request</h1>
+      <p>Punya ide fitur atau menemukan masalah? Sampaikan di sini — setiap masukan sangat berarti.</p>
+    </div>
+
+    <!-- Form card -->
+    <div class="form-card glass" id="form-card">
+      <form id="request-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_ID" method="POST" novalidate>
+
+        <!-- Platform -->
+        <div class="field">
+          <label>Platform</label>
+          <div class="platform-toggle">
+            <input type="radio" name="platform" id="android" value="Android" required>
+            <label for="android">🤖 Android</label>
+            <input type="radio" name="platform" id="ios" value="iOS">
+            <label for="ios">🍎 iOS</label>
+          </div>
+        </div>
+
+        <!-- Name (optional) -->
+        <div class="field">
+          <label for="name">Nama <span class="optional">(opsional)</span></label>
+          <input type="text" id="name" name="name" placeholder="Siapa yang menyapa?">
+        </div>
+
+        <!-- Request -->
+        <div class="field">
+          <label for="message">Request / Feedback <span style="color: #e55;">*</span></label>
+          <textarea id="message" name="message" placeholder="Ceritakan ide fitur, bug yang ditemukan, atau masukan apapun..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Kirim →</button>
+      </form>
+
+      <!-- Success state -->
+      <div class="success-msg" id="success-msg">
+        <div class="checkmark">✦</div>
+        <h3>Terima kasih!</h3>
+        <p>Masukan kamu sudah diterima dan akan dibaca dengan seksama.</p>
+      </div>
+    </div>
+
+    <!-- Support card (optional, non-intrusive) -->
+    <div class="support-card glass">
+      <div class="support-card-text">
+        <strong>Suka dengan An-Najm?</strong>
+        <p>Dukung pengembangan agar tetap gratis dan bebas iklan.</p>
+      </div>
+      <a href="https://trakteer.id/gingetsu" target="_blank" rel="noopener" class="trakteer-link">
+        ☕ Support
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('request-form');
+    const btn = document.getElementById('submit-btn');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Basic validation
+      const platform = form.querySelector('input[name="platform"]:checked');
+      const message = form.querySelector('#message').value.trim();
+      if (!platform) { alert('Pilih platform terlebih dahulu.'); return; }
+      if (!message) { alert('Request / Feedback tidak boleh kosong.'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Mengirim...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          successMsg.style.display = 'block';
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Kirim →';
+        alert('Gagal mengirim. Coba lagi atau hubungi langsung via email.');
+      }
+    });
+  </script>
+</body>
+</html>

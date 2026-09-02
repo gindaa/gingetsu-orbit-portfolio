@@ -7,7 +7,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         project: resolve(__dirname, 'project.html'),
-        privacy_annajm: resolve(__dirname, 'privacy-annajm.html')
+        privacy_annajm: resolve(__dirname, 'privacy-annajm.html'),
+        annajm_request: resolve(__dirname, 'annajm-request.html')
       }
     }
   }
