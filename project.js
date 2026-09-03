@@ -140,9 +140,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const techContainer = document.getElementById('project-tech');
     if (techContainer && project.techStack) {
       techContainer.innerHTML = '';
+      techContainer.style.display = 'flex';
+      techContainer.style.flexWrap = 'wrap';
+      techContainer.style.gap = '0.5rem';
       project.techStack.forEach(tech => {
         const span = document.createElement('span');
         span.textContent = tech;
+        span.className = 'tech-pill';
         techContainer.appendChild(span);
       });
     }
@@ -151,9 +155,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     const tagsContainer = document.getElementById('project-tags');
     if (tagsContainer && project.tags) {
       tagsContainer.innerHTML = '';
+      tagsContainer.style.display = 'flex';
+      tagsContainer.style.flexWrap = 'wrap';
+      tagsContainer.style.gap = '0.5rem';
       project.tags.forEach(tag => {
         const span = document.createElement('span');
         span.textContent = tag;
+        span.className = 'tech-pill';
         tagsContainer.appendChild(span);
       });
     }
