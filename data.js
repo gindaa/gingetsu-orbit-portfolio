@@ -94,7 +94,7 @@ export const projectsData = {
     `,
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #4f46e5, #1e1b4b)",
-    image: "",
+    image: "/aegis_logo.png",
     invertLogo: false
   },
   pegadaian: {
