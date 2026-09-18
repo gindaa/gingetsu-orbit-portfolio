@@ -194,20 +194,6 @@ export const projectsData = {
 
 export const experiencesData = [
   {
-    id: "ts_lawfirm",
-    role: "Lead Full-Stack Consultant",
-    company: "TS Lawfirm",
-    date: "Jan 2026 - Present",
-    shortDesc: "Architected and delivered Aegis Meridian, a comprehensive Legal Case Management and Law Firm ERP system from the ground up.",
-    responsibilities: [
-      "Enterprise System Architecture: Architected Aegis Meridian, a bespoke legal ERP managing the complete lifecycle of legal 'Matters' from client onboarding through to final financial settlement.",
-      "Full-Stack Engineering: Engineered the entire platform using Next.js App Router (React 19), TypeScript, and Prisma ORM, backed by an optimized SQLite database for rapid relational queries.",
-      "Complex Financial & Accounting Engine: Designed a specialized legal accounting module that handles case budgets, operational expenses, and automatically calculates internal partner/associate fee shares and external referrals.",
-      "Stakeholder & Event Management: Implemented robust Role-Based Access Control (RBAC) to secure sensitive case files, and developed an integrated calendar system with Google Calendar sync to prevent missed court dates or client meetings."
-    ],
-    relatedProjects: ["aegis"]
-  },
-  {
     id: "gingetsu",
     role: "Independent Technical Consultant",
     company: "GingetsuOrbit",
