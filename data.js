@@ -58,11 +58,44 @@ export const projectsData = {
         Gateway <-->|Distributed Read/Write| Couch
         Gateway -->|Webhooks| Int
     `,
-    accentGradient: "linear-gradient(135deg, #4b6cb7, #182848)",
-    liveLink: "#",
-    isPrivate: true,
-    image: "/orion_logo.png",
-    invertLogo: true
+    liveLink: "",
+    accentGradient: "linear-gradient(135deg, #0284c7, #0c4a6e)",
+    image: "/orion_logo_white.png",
+    invertLogo: false
+  },
+  aegis: {
+    title: "Aegis Meridian",
+    subtitle: "Comprehensive Legal Case Management & Law Firm ERP",
+    description: "Architected and developed a bespoke, end-to-end Legal Practice Management system for TS Lawfirm. Designed to digitize the entire lifecycle of legal operations, from initial client onboarding to final case resolution and financial settlement.<br><br><strong>System Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Matter & Journey Tracking:</strong> Centralized dashboard for tracking legal 'Matters', recording detailed case progressions ('Journeys'), and managing internal/external stakeholders.</li><li><strong>Legal Accounting Engine:</strong> Built-in financial module handling case budgets, operational expenses, and automated calculation of internal/external fee shares.</li><li><strong>Event Synchronization:</strong> Integrated calendar system with Google Calendar sync to ensure no court date or client meeting is ever missed.</li><li><strong>Role-Based Access Control:</strong> Strict security matrix ensuring sensitive case files and financial data are only accessible to authorized partners and associates.</li></ul>",
+    role: "Lead Full-Stack Consultant",
+    year: "2026",
+    tags: ["ERP", "LegalTech", "Case Management", "Accounting"],
+    techStack: ["Next.js", "TypeScript", "React 19", "Prisma", "SQLite", "JWT Auth"],
+    architectureMermaid: `
+      graph LR
+        classDef default fill:transparent,stroke:transparent;
+        
+        subgraph Frontend [Client Layer]
+          UI["<div style='text-align:center; min-width: 140px;'><img src='https://cdn.jsdelivr.net/npm/simple-icons@13/icons/react.svg' class='tech-icon' /><div class='node-title'>Next.js App Router</div><div class='node-sub'>React 19 + Tailwind CSS</div></div>"]
+        end
+
+        subgraph Backend [Logic & Auth]
+          API["<div style='text-align:center; min-width: 140px;'><img src='https://cdn.jsdelivr.net/npm/simple-icons@13/icons/nextdotjs.svg' class='tech-icon' /><div class='node-title'>Server Actions</div><div class='node-sub'>Zod Validation + Jose JWT</div></div>"]
+          ORM["<div style='text-align:center; min-width: 140px;'><img src='https://cdn.jsdelivr.net/npm/simple-icons@13/icons/prisma.svg' class='tech-icon' /><div class='node-title'>Prisma ORM</div><div class='node-sub'>Type-safe DB Access</div></div>"]
+        end
+
+        subgraph Data [Storage Layer]
+          DB["<div style='text-align:center; min-width: 140px;'><img src='https://cdn.jsdelivr.net/npm/simple-icons@13/icons/sqlite.svg' class='tech-icon' /><div class='node-title'>Better SQLite3</div><div class='node-sub'>Relational Data</div></div>"]
+        end
+
+        UI -->|Server Actions| API
+        API -->|Query| ORM
+        ORM <-->|Read/Write| DB
+    `,
+    liveLink: "",
+    accentGradient: "linear-gradient(135deg, #4f46e5, #1e1b4b)",
+    image: "",
+    invertLogo: false
   },
   pegadaian: {
     title: "Pegadaian Digital Syariah",
@@ -161,6 +194,20 @@ export const projectsData = {
 
 export const experiencesData = [
   {
+    id: "ts_lawfirm",
+    role: "Lead Full-Stack Consultant",
+    company: "TS Lawfirm",
+    date: "Jan 2026 - Present",
+    shortDesc: "Architected and delivered Aegis Meridian, a comprehensive Legal Case Management and Law Firm ERP system from the ground up.",
+    responsibilities: [
+      "Enterprise System Architecture: Architected Aegis Meridian, a bespoke legal ERP managing the complete lifecycle of legal 'Matters' from client onboarding through to final financial settlement.",
+      "Full-Stack Engineering: Engineered the entire platform using Next.js App Router (React 19), TypeScript, and Prisma ORM, backed by an optimized SQLite database for rapid relational queries.",
+      "Complex Financial & Accounting Engine: Designed a specialized legal accounting module that handles case budgets, operational expenses, and automatically calculates internal partner/associate fee shares and external referrals.",
+      "Stakeholder & Event Management: Implemented robust Role-Based Access Control (RBAC) to secure sensitive case files, and developed an integrated calendar system with Google Calendar sync to prevent missed court dates or client meetings."
+    ],
+    relatedProjects: ["aegis"]
+  },
+  {
     id: "gingetsu",
     role: "Independent Technical Consultant",
     company: "GingetsuOrbit",
@@ -172,7 +219,7 @@ export const experiencesData = [
       "Offline-First Data Synchronization: Designed and implemented a resilient, offline-first data synchronization layer leveraging CouchDB and PouchDB, guaranteeing continuous operational uptime and zero data loss during network disruptions.",
       "Operational Problem Solving: Diagnosed field-level user bottlenecks and engineered targeted operational fixes, directly translating on-the-ground feedback into actionable system improvements to streamline adoption."
     ],
-    relatedProjects: ["alpha", "dboss", "tifakafe", "babysheduler", "soiltracker"]
+    relatedProjects: ["aegis", "alpha", "dboss", "tifakafe", "babysheduler", "soiltracker"]
   },
   {
     id: "lead_pegadaian",
