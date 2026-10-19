@@ -69,6 +69,31 @@ orbsContainer.appendChild(orb1);
 orbsContainer.appendChild(orb2);
 
 // --------------------------------------------------------
+// Render Bento Grid Projects (Single Source of Truth)
+// --------------------------------------------------------
+const bentoView = document.getElementById('bento-view');
+if (bentoView) {
+  Object.entries(projectsData).forEach(([id, proj]) => {
+    const card = document.createElement('a');
+    card.href = `/project.html?id=${id}`;
+    card.className = 'project-card glass';
+    const tagsHtml = (proj.tags || []).slice(0, 3).map(t => `<span>${t}</span>`).join('');
+    card.innerHTML = `
+      <div class="project-image" style="background: ${proj.accentGradient};">
+        <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="height: 65%; width: auto; max-width: 85%; object-fit: contain;">
+      </div>
+      <div class="project-info">
+        <h3>${proj.title}</h3>
+        <p>${proj.subtitle}</p>
+        <div class="tags">${tagsHtml}</div>
+        <span class="project-link">Visit Project <span>&rarr;</span></span>
+      </div>
+    `;
+    bentoView.appendChild(card);
+  });
+}
+
+// --------------------------------------------------------
 // Render Experiences & Handle Modal
 // --------------------------------------------------------
 const timelineContainer = document.getElementById('experience-timeline');
@@ -119,11 +144,11 @@ if (timelineContainer && experienceWrapper) {
             card.className = 'project-card glass';
             card.innerHTML = `
               <div class="project-image" style="background: ${proj.accentGradient || '#2a2a2a'}; position: relative; height: 80px; display: flex; align-items: center; justify-content: center;">
-                <img src="${proj.image}" alt="${proj.title}" style="max-width: 60%; max-height: 60%; object-fit: contain; ${proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;'}">
+                <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="max-width: 60%; max-height: 60%; object-fit: contain; ${proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;'}">
               </div>
               <div class="project-info" style="padding: 0.75rem;">
                 <h3 style="margin-bottom: 0.15rem; font-size: 0.95rem;">${proj.title}</h3>
-                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.2;">${proj.shortDesc || proj.subtitle || ''}</p>
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.2;">${proj.subtitle || ''}</p>
               </div>
             `;
             projContainer.appendChild(card);
@@ -146,62 +171,39 @@ if (timelineContainer && experienceWrapper) {
     });
   }
 }
+
 // Celestial HUD Logic
 function updateCelestialHUD() {
   const timeEl = document.getElementById('hud-time');
   const dateEl = document.getElementById('hud-date');
   const moonEl = document.getElementById('hud-moon');
-  
   if (!timeEl || !dateEl || !moonEl) return;
   
   const now = new Date();
-  
-  // Update Time (HH:MM:SS)
-  const timeStr = now.toLocaleTimeString('en-US', { 
-    hour12: false, 
-    hour: '2-digit', 
-    minute: '2-digit', 
-    second: '2-digit' 
+  timeEl.textContent = now.toLocaleTimeString('en-US', {
+    hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
   });
-  timeEl.textContent = timeStr;
-  
-  // Update Date
-  const dateStr = now.toLocaleDateString('en-US', { 
-    weekday: 'long', 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  dateEl.textContent = now.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
-  dateEl.textContent = dateStr;
   
-  // Calculate Moon Phase
   const LUNAR_MONTH = 29.530588;
   const newMoon = new Date(Date.UTC(2000, 0, 6, 12, 24, 1));
-  const diff = now.getTime() - newMoon.getTime();
-  const days = diff / (1000 * 60 * 60 * 24);
-  const phase = (days % LUNAR_MONTH) / LUNAR_MONTH;
-  const normalizedPhase = phase < 0 ? phase + 1 : phase;
+  const days = (now.getTime() - newMoon.getTime()) / 86400000;
+  const phase = ((days % LUNAR_MONTH) / LUNAR_MONTH + 1) % 1;
   
   let phaseName = 'New Moon';
-  let icon = '🌑';
-  
-  
-  if (normalizedPhase > 0.02 && normalizedPhase < 0.23) { phaseName = 'Waxing Crescent'; }
-  else if (normalizedPhase >= 0.23 && normalizedPhase < 0.27) { phaseName = 'First Quarter'; }
-  else if (normalizedPhase >= 0.27 && normalizedPhase < 0.48) { phaseName = 'Waxing Gibbous'; }
-  else if (normalizedPhase >= 0.48 && normalizedPhase < 0.52) { phaseName = 'Full Moon'; }
-  else if (normalizedPhase >= 0.52 && normalizedPhase < 0.73) { phaseName = 'Waning Gibbous'; }
-  else if (normalizedPhase >= 0.73 && normalizedPhase < 0.77) { phaseName = 'Last Quarter'; }
-  else if (normalizedPhase >= 0.77 && normalizedPhase < 0.98) { phaseName = 'Waning Crescent'; }
+  if (phase > 0.02 && phase < 0.23) phaseName = 'Waxing Crescent';
+  else if (phase >= 0.23 && phase < 0.27) phaseName = 'First Quarter';
+  else if (phase >= 0.27 && phase < 0.48) phaseName = 'Waxing Gibbous';
+  else if (phase >= 0.48 && phase < 0.52) phaseName = 'Full Moon';
+  else if (phase >= 0.52 && phase < 0.73) phaseName = 'Waning Gibbous';
+  else if (phase >= 0.73 && phase < 0.77) phaseName = 'Last Quarter';
+  else if (phase >= 0.77 && phase < 0.98) phaseName = 'Waning Crescent';
 
-  if (timeEl) timeEl.textContent = timeStr;
-  if (dateEl) dateEl.textContent = dateStr;
-  if (moonEl) {
-    moonEl.textContent = phaseName;
-  }
+  moonEl.textContent = phaseName;
 }
 
-// Initialize and set interval
 setInterval(updateCelestialHUD, 1000);
 updateCelestialHUD();
 

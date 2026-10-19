@@ -2,6 +2,7 @@ import { projectsData } from './data.js';
 import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
 
 const currentTheme = localStorage.getItem('theme') || 'dark';
+document.documentElement.setAttribute('data-theme', currentTheme);
 const isDark = currentTheme === 'dark';
 
 const textMain = isDark ? '#f8fafc' : '#0f172a';
@@ -91,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   if (project) {
     // Populate Data
-    document.title = `${project.title} - Gingetsu Orbit`;
+    document.title = `${project.title} — PT Gingetsu Orbit System`;
     document.getElementById('project-title').textContent = project.title;
     document.getElementById('project-subtitle').textContent = project.subtitle;
     document.getElementById('project-description').innerHTML = project.description;
@@ -239,7 +240,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const linkBtn = document.getElementById('project-live-link');
     if (project.liveLink && project.liveLink === "#") {
       linkBtn.style.display = 'inline-flex';
-      linkBtn.href = `mailto:hello@gingetsu.com?subject=Private Demo Request: ${project.title}`;
+      linkBtn.href = `mailto:gin@gingetsuorbit.id?subject=Private Demo Request: ${project.title}`;
       
       const textSpan = document.getElementById('project-live-link-text');
       if (textSpan) {

@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const universeData = {
-    core: { x: 0, y: 0, title: "Baginda Praka Ginting", desc: "Lead Mobile Engineer & IT Solutions Architect", skills: [] }
+    core: { x: 0, y: 0, title: "PT Gingetsu Orbit System", desc: "Founder & Principal Solutions Architect — Baginda Praka Ginting", skills: [] }
   };
 
-  // Parse Skills
-  document.querySelectorAll('.skills span').forEach(el => {
-    universeData.core.skills.push(el.textContent);
+  // Parse Skills from Systems Status list
+  document.querySelectorAll('.systems-list .system-item').forEach(el => {
+    universeData.core.skills.push(el.textContent.trim());
   });
 
   // --------------------------------------------------------
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Camera & Interaction State
   let camera = { x: 0, y: 0, zoom: 1 };
-  window.test_camera = camera;
   let targetCameraX = 0;
   let targetCameraY = 0;
   let preJumpCameraX = 0;
@@ -77,19 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let isExploring = false;
   let exploreIndex = 0;
   let expStarsOnly = []; // We will extract experience stars specifically to navigate them
-
-  window.test_vars = {
-    triggerReturn: () => {
-      isReturningToOrbit = true;
-      returnStartTime = Date.now();
-      startReturnZoom = camera.zoom;
-      startReturnX = camera.x;
-      startReturnY = camera.y;
-      targetCameraX = width / 2;
-      targetCameraY = height / 2;
-      targetZoom = 1;
-    }
-  };
   
   let isDragging = false;
   let lastMouse = { x: 0, y: 0 };
@@ -251,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
         glow: 25,
         data: {
           title: proj.title,
-          desc: proj.shortDesc,
+          desc: proj.subtitle,
           tags: proj.tags || [],
           link: '/project.html?id=' + projId
         },
@@ -713,12 +699,12 @@ document.addEventListener('DOMContentLoaded', () => {
           tooltip.classList.add('moon-hud');
           ttSubtitle.style.display = 'block';
           
-          scrambleText(ttTitle, "CORE IDENTITY // GINGETSU ORBIT", false, 0);
-          scrambleText(ttSubtitle, "Lead Mobile Engineer & IT Solutions Architect", false, 250);
-          scrambleText(ttDesc, "7+ years architecting resilient apps, navigating complex legacy migrations, and building high-performing engineering teams.", false, 500);
+          scrambleText(ttTitle, "CORE ENTITY // PT GINGETSU ORBIT SYSTEM", false, 0);
+          scrambleText(ttSubtitle, "Founder & Principal Architect — Baginda Praka Ginting", false, 250);
+          scrambleText(ttDesc, "Incorporated engineering studio & consultancy delivering enterprise ERP systems, offline-first synchronization, and mission-critical mobile platforms.", false, 500);
           
           ttTags.innerHTML = '';
-          const coreSkills = ['Go', 'React', 'Kotlin', 'Swift', 'AWS', 'System Architecture', 'CI/CD'];
+          const coreSkills = ['Go', 'React / Next.js', 'Kotlin', 'Swift', 'System Architecture', 'CI/CD'];
           coreSkills.forEach(tag => {
             const s = document.createElement('span');
             s.textContent = tag;
@@ -759,7 +745,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tooltip.style.opacity = '1';
       
     } else {
-      document.body.style.cursor = isDragging ? 'grabbing' : (isDragging ? 'grabbing' : 'grab');
+      document.body.style.cursor = isDragging ? 'grabbing' : 'grab';
       tooltip.style.opacity = '0';
       currentHoveredNode = null;
     }
@@ -770,50 +756,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (currentHoveredNode.type === 'project' && currentHoveredNode.data.link) {
         window.location.href = currentHoveredNode.data.link;
       } else if (currentHoveredNode.type === 'experience') {
-        const exp = currentHoveredNode.data.originalData;
-        const expModal = document.getElementById('exp-details');
-        if (exp && expModal) {
-          document.getElementById('exp-details-role').textContent = exp.role;
-          document.getElementById('exp-details-company').textContent = exp.company;
-          document.getElementById('exp-details-date').textContent = exp.date;
-          
-          const respContainer = document.getElementById('exp-details-responsibilities');
-          respContainer.innerHTML = '';
-          if (exp.responsibilities) {
-            exp.responsibilities.forEach(r => {
-              const li = document.createElement('li');
-              li.textContent = r;
-              respContainer.appendChild(li);
-            });
-          }
-          
-          const projContainer = document.getElementById('exp-details-projects');
-          const projTitle = document.getElementById('exp-details-projects-title');
-          projContainer.innerHTML = '';
-          
-          if (exp.relatedProjects && exp.relatedProjects.length > 0 && typeof projectsData !== 'undefined') {
-            projTitle.style.display = 'block';
-            exp.relatedProjects.forEach(projId => {
-              const proj = projectsData[projId];
-              if (proj) {
-                const card = document.createElement('a');
-                card.href = proj.link || '#';
-                card.className = 'project-card glass';
-                card.innerHTML = `
-                  <div class="project-image" style="background-image: url('${proj.image}'); ${proj.invertLogo ? 'filter: invert(1);' : ''}"></div>
-                  <div class="project-info">
-                    <h3>${proj.title}</h3>
-                    <p>${proj.shortDesc}</p>
-                  </div>
-                `;
-                projContainer.appendChild(card);
-              }
-            });
-          } else {
-            projTitle.style.display = 'none';
-          }
-          
-          expModal.classList.add('active');
+        const idx = expStarsOnly.indexOf(currentHoveredNode);
+        if (idx !== -1) {
+          isExploring = true;
+          document.getElementById('exploration-hud').classList.remove('hidden');
+          document.getElementById('celestial-hud').classList.add('mobile-hidden');
+          document.getElementById('exploration-status-indicator').classList.remove('hidden');
+          tooltip.style.opacity = '0';
+          navigateToExploreNode(idx);
         }
       } else if (currentHoveredNode.type === 'moon') {
         if (!isHyperjumping) {
@@ -1037,15 +987,15 @@ document.addEventListener('DOMContentLoaded', () => {
       "> INITIATING SYSTEM OVERRIDE...",
       "> ROOT ACCESS GRANTED.",
       "",
-      "> LOADING DOSSIER: BAGINDA PRAKA GINTING",
-      "> ROLE: LEAD MOBILE ENGINEER & IT SOLUTIONS ARCHITECT",
-      "> EXP: 7+ YEARS IN HIGH-AVAILABILITY ENVIRONMENTS",
+      "> ENTITY: PT GINGETSU ORBIT SYSTEM",
+      "> FOUNDER & PRINCIPAL ARCHITECT: BAGINDA PRAKA GINTING",
+      "> EXP: 7+ YEARS IN HIGH-AVAILABILITY ENTERPRISE SYSTEMS",
       "",
-      "> ACCOMPLISHMENTS:",
-      "  - Architected resilient mobile applications.",
-      "  - Navigated complex legacy system migrations.",
+      "> CORE CAPABILITIES:",
+      "  - Architected multi-tenant ERP & LegalTech platforms.",
+      "  - Engineered offline-first distributed data sync engines.",
+      "  - Spearheaded native mobile modernizations (Swift/Kotlin).",
       "  - Built & scaled high-performing engineering teams.",
-      "  - Drove technical strategy across multiple platforms.",
       "",
       "> READY FOR COMMAND INPUT..."
     ];

@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="view-transition" content="same-origin" />
-    <title>Gingetsu Orbit</title>
+    <title>Gingetsu Orbit — PT Gingetsu Orbit System</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,99 +32,6 @@
           <a href="#experience">Experience</a>
           <a href="#about">About</a>
         </div>
-        <style>
-          .celestial-hud-ui {
-            position: fixed;
-            top: 80px;
-            left: 20px;
-            z-index: 1000;
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            padding: 12px 16px;
-            background: rgba(11,14,20,0.4);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 8px;
-            border: 1px solid rgba(226,232,240,0.05);
-            width: auto;
-            min-width: 150px;
-            font-family: 'Space Grotesk', sans-serif;
-            letter-spacing: 0.5px;
-          }
-          .celestial-hud-ui .hud-time {
-            font-size: 1.4rem;
-            font-weight: 300;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-          }
-          .celestial-hud-ui .hud-time::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 4px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 8px 1px #fff;
-            animation: pulse-star 2.5s infinite;
-          }
-          @keyframes pulse-star {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-          }
-          .celestial-hud-ui .hud-date {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-          }
-          .celestial-hud-ui .hud-status {
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            color: #fff;
-            margin-top: 6px;
-            display: inline-block;
-            padding: 3px 8px;
-            background: rgba(226,232,240,0.08);
-            border-radius: 4px;
-            border: 1px solid rgba(226,232,240,0.1);
-            align-self: flex-start;
-          }
-          [data-theme="light"] .celestial-hud-ui {
-            background: rgba(255, 255, 255, 0.7);
-            border-color: rgba(0, 0, 0, 0.1);
-          }
-          [data-theme="light"] .celestial-hud-ui .hud-time {
-            color: #0f172a;
-          }
-          [data-theme="light"] .celestial-hud-ui .hud-time::before {
-            background: #3b82f6;
-            box-shadow: 0 0 8px 1px #3b82f6;
-          }
-          [data-theme="light"] .celestial-hud-ui .hud-date {
-            color: #475569;
-          }
-          [data-theme="light"] .celestial-hud-ui .hud-status {
-            color: #0f172a;
-            background: rgba(0, 0, 0, 0.05);
-            border-color: rgba(0, 0, 0, 0.1);
-          }
-          @media (max-width: 768px) {
-            .celestial-hud-ui {
-              top: 130px;
-              left: 10px;
-              padding: 10px 12px;
-            }
-            .celestial-hud-ui .hud-time {
-              font-size: 1.2rem;
-            }
-            .celestial-hud-ui .hud-date {
-              font-size: 0.65rem;
-            }
-          }
-        </style>
         
         <div class="celestial-hud-ui" id="celestial-hud">
           <div class="hud-time" id="hud-time">00:00</div>
@@ -207,10 +114,14 @@
           <div class="moon"></div>
         </div>
         <div class="hero-content">
+          <div class="entity-badge glass">
+            <span class="pulse-dot"></span>
+            <span>PT GINGETSU ORBIT SYSTEM</span>
+          </div>
           <h1>Crafting digital experiences</h1>
-          <p class="subtitle">A minimalist showcase of resilient architecture and elegant engineering.</p>
+          <p class="subtitle">Enterprise ERP systems, resilient architecture, and high-availability mobile &amp; web engineering.</p>
           <div class="hero-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-            <a href="#work" class="btn primary-btn">View My Portfolio</a>
+            <a href="#work" class="btn primary-btn">View Selected Works</a>
             <a href="#about" class="btn secondary-btn">Let's discuss your project</a>
           </div>
         </div>
@@ -222,183 +133,8 @@
           <h2>Selected Works</h2>
         </div>
 
-        <!-- Bento Grid View -->
-        <div id="bento-view" class="project-grid">
-          
-
-
-          <!-- Project Card: OrionOrbit -->
-          <a href="/project.html?id=alpha" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #4b6cb7, #182848); position: relative;">
-              <img src="/orion_logo.png" alt="OrionOrbit" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 80%; width: auto; max-width: 90%; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.5;">
-            </div>
-            <div class="project-info">
-              <h3>OrionOrbit</h3>
-              <p>Multi-Tenant F&B ERP & Omnichannel POS</p>
-              <div class="tags">
-                <span>ERP</span>
-                <span>POS</span>
-                <span>SaaS</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-          <!-- Project Card: Aegis Meridian -->
-          <a href="/project.html?id=aegis" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #4f46e5, #1e1b4b); position: relative;">
-              <!-- Logo Image -->
-              <div style="position: absolute; inset: 0; background: url('/aegis_logo.png') center/50% no-repeat; filter: brightness(0) invert(1); opacity: 0.8;"></div>
-            </div>
-            <div class="project-info">
-              <h3>Aegis Meridian</h3>
-              <p>Comprehensive Legal Case Management & Law Firm ERP</p>
-              <div class="tags">
-                <span>ERP</span>
-                <span>LegalTech</span>
-                <span>Case Management</span>
-              </div>
-              <span class="project-link">View Details <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: dbosscoffee -->
-          <a href="/project.html?id=dboss" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #d4af37, #8a6327); position: relative;">
-              <div style="position: absolute; inset: 0; background: url('/dboss_logo_transparent.png') center/50% no-repeat; filter: brightness(0) invert(1); opacity: 0.7;"></div>
-            </div>
-            <div class="project-info">
-              <h3>D'Boss Coffee</h3>
-              <p>A minimalist portfolio for a premium digital presence, blending high-end design with effortless storytelling.</p>
-              <div class="tags">
-                <span>F&B</span>
-                <span>QRIS</span>
-                <span>POS</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: tifakafe -->
-          <a href="/project.html?id=tifakafe" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #8B5A2B, #301b0d); position: relative;">
-              <div style="position: absolute; inset: 0; background: url('/tifakafe_logo.png') center/50% no-repeat; filter: brightness(0) invert(1); opacity: 0.7;"></div>
-            </div>
-            <div class="project-info">
-              <h3>Tifa Kafe</h3>
-              <p>A premium digital presence and VIP booking platform in Medan.</p>
-              <div class="tags">
-                <span>F&B</span>
-                <span>VIP</span>
-                <span>Web</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: Pegadaian Digital Syariah -->
-          <a href="/project.html?id=pegadaian" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #008f39, #004d1a); position: relative;">
-              <img src="/pegadaian_emblem_only.png" alt="Pegadaian Digital Syariah" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 75%; width: auto; max-width: 90%; object-fit: contain;">
-            </div>
-            <div class="project-info">
-              <h3>Pegadaian Digital Syariah</h3>
-              <p>Digital platform for Sharia-compliant pawnshop services and gold investments.</p>
-              <div class="tags">
-                <span>Fintech</span>
-                <span>Syariah</span>
-                <span>Gold</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: Tring! -->
-          <a href="/project.html?id=triing" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #ffffff, #e6f4ea); position: relative;">
-              <img src="/TRING_by_Pegadaian.svg" alt="Tring! Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain;">
-            </div>
-            <div class="project-info">
-              <h3>Tring! by Pegadaian</h3>
-              <p>A digital ecosystem and lifestyle application by Pegadaian.</p>
-              <div class="tags">
-                <span>Fintech</span>
-                <span>Lifestyle</span>
-                <span>App</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: Agen Pegadaian Syariah -->
-          <a href="/project.html?id=agen_pegadaian" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #10b981, #047857); position: relative;">
-              <img src="/pegadaian_emblem_only.png" alt="Agen Pegadaian Syariah" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 75%; width: auto; max-width: 90%; object-fit: contain;">
-            </div>
-            <div class="project-info">
-              <h3>Agen Pegadaian Syariah</h3>
-              <p>Platform for official Pegadaian Syariah agents to manage transactions.</p>
-              <div class="tags">
-                <span>Fintech</span>
-                <span>B2B</span>
-                <span>Dashboard</span>
-              </div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: BabyScheduler -->
-          <a href="/project.html?id=babysheduler" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #8b5cf6, #6d28d9); position: relative;">
-              <img src="/babyscheduler_line_art.png" alt="BabyScheduler Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain;">
-            </div>
-            <div class="project-info">
-              <h3>BabyScheduler</h3>
-              <p>A smart scheduling and tracking platform for infant care routines.</p>
-              <div class="tags"><span>React</span><span>Web</span></div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: Soil Tracker -->
-          <a href="/project.html?id=soiltracker" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #10b981, #047857); position: relative; display: flex; align-items: center; justify-content: center;">
-              <img src="/soil_tracker_logo.png" alt="Soil Tracker Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain; opacity: 0.9;">
-            </div>
-            <div class="project-info">
-              <h3>Soil Tracker</h3>
-              <p>Agricultural tracking and management system.</p>
-              <div class="tags"><span>Transport</span><span>Tracker</span><span>ERP</span></div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: Studious -->
-          <a href="/project.html?id=studious" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); position: relative; display: flex; align-items: center; justify-content: center;">
-              <img src="/studious_logo.png" alt="Studious Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain; opacity: 0.9;">
-            </div>
-            <div class="project-info">
-              <h3>Studious</h3>
-              <p>Comprehensive college management and student information system.</p>
-              <div class="tags"><span>Education</span><span>Mobile App</span></div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-          <!-- Project Card: SmartTB -->
-          <a href="/project.html?id=smarttb" class="project-card glass">
-            <div class="project-image" style="background: linear-gradient(135deg, #ef4444, #991b1b); position: relative; display: flex; align-items: center; justify-content: center;">
-              <img src="/smarttb_logo.png" alt="SmartTB Logo" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 65%; width: auto; max-width: 90%; object-fit: contain; opacity: 0.9;">
-            </div>
-            <div class="project-info">
-              <h3>SmartTB</h3>
-              <p>Tuberculosis data collection app for Nias Regency with offline-first capabilities.</p>
-              <div class="tags"><span>Healthcare</span><span>Data Collection</span></div>
-              <span class="project-link">Visit Project <span>&rarr;</span></span>
-            </div>
-          </a>
-
-        </div>
+        <!-- Bento Grid View (Populated dynamically from data.js by main.js) -->
+        <div id="bento-view" class="project-grid"></div>
       </section>
 
       <!-- Experience Section -->
@@ -438,13 +174,13 @@
         <div class="about-content glass">
           <div class="about-grid">
             <div class="about-left">
-              <h2 class="hud-section-title" style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--accent);">PROFILE // BAGINDA PRAKA GINTING</h2>
-              <h3 class="about-headline">Lead Mobile Engineer & IT Solutions Architect</h3>
+              <h2 class="hud-section-title" style="font-size: 0.8rem; margin-bottom: 1rem; color: var(--accent);">FOUNDER &amp; PRINCIPAL ARCHITECT // BAGINDA PRAKA GINTING</h2>
+              <h3 class="about-headline">PT Gingetsu Orbit System</h3>
               <p class="bio">
-                With 7+ years of experience, I specialize in architecting resilient applications, driving technical strategy, and delivering business-aligned solutions. From navigating complex legacy migrations to building high-performing engineering teams, my focus is always on engineering excellence.
+                With 7+ years of engineering leadership across enterprise fintech and distributed systems, I lead PT Gingetsu Orbit System—architecting bespoke ERPs, offline-first platforms, and mission-critical mobile applications. From complex legacy modernizations to full-lifecycle B2B system delivery, our focus is uncompromising engineering excellence.
               </p>
               <div class="social-links-minimal">
-                <a href="mailto:bagindapraka@gmail.com" class="social-btn-mini" aria-label="Email">
+                <a href="mailto:gin@gingetsuorbit.id" class="social-btn-mini" aria-label="Email">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.728L12 16.64l-6.545-4.912v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
                 </a>
                 <a href="https://wa.me/6287748476477" target="_blank" class="social-btn-mini" aria-label="WhatsApp">
@@ -455,15 +191,6 @@
                 </a>
                 <a href="https://linkedin.com/in/bagindapraka" target="_blank" class="social-btn-mini" aria-label="LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                </a>
-
-                <!-- Separator -->
-                <span class="social-separator" aria-hidden="true"></span>
-
-                <!-- Trakteer Support -->
-                <a href="https://trakteer.id/gingetsu" target="_blank" rel="noopener" class="social-btn-mini trakteer-btn" aria-label="Support on Trakteer">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm0 14.5c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-                  <span>Support</span>
                 </a>
               </div>
             </div>
@@ -489,8 +216,8 @@
 
       <!-- Footer (Inside main content wrapper) -->
       <footer id="main-footer" style="text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.9rem;">
-        <p>&copy; 2026 Gingetsu Orbit. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.8rem;">Building free apps for the community — if you find them useful, <a href="https://trakteer.id/gingetsu" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s;" onmouseover="this.style.borderBottomColor='var(--accent)'" onmouseout="this.style.borderBottomColor='transparent'">support the work ☕</a></p>
+        <p>&copy; 2026 PT Gingetsu Orbit System. All rights reserved.</p>
+        <p style="margin-top: 0.4rem; font-size: 0.8rem; opacity: 0.7;">Enterprise Software Architecture, Custom ERP &amp; Mobile Engineering &mdash; Indonesia</p>
       </footer>
     </main>
 

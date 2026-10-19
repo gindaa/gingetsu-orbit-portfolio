@@ -1,37 +1,11 @@
 export const projectsData = {
-  dboss: {
-    title: "D'Boss Coffee",
-    subtitle: "A modern digital presence and QRIS ordering system for a premium cafe in Subang.",
-    description: "Architected a high-performance web platform for D'Boss Coffee featuring a seamless 'Scan & Pay' flow (QRIS & Midtrans) so customers can order instantly from their tables.<br><br><strong>Architecture Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Real-time Sync:</strong> Live CouchDB database syncs directly with the physical café POS for instant price and inventory updates.</li><li><strong>Edge Performance:</strong> Next.js Incremental Static Regeneration (ISR) ensures instant page loads without sacrificing data accuracy.</li><li><strong>Millisecond Validation:</strong> Live inventory checks fire instantly before checkout, ensuring a flawless cart-to-kitchen pipeline.</li></ul>",
-    role: "Lead Full-Stack Consultant",
-    year: "2026",
-    tags: ["F&B", "QRIS", "Point of Sale", "Web"],
-    techStack: ["React", "TypeScript", "Next.js", "Vite", "CouchDB"],
-    liveLink: "https://dbosscoffee.co.id",
-    accentGradient: "linear-gradient(135deg, #d4af37, #8a6327)",
-    image: "/dboss_logo_transparent.png",
-    invertLogo: true
-  },
-  tifakafe: {
-    title: "Tifa Kafe",
-    subtitle: "A premium digital presence and VIP booking platform in Medan.",
-    description: "Designed a high-performance web platform for Tifa Kafe in Medan, blending a premium aesthetic with robust functionality.<br><br><strong>Technical Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>VIP Reservation Engine:</strong> Custom booking system allowing guests to secure VIP rooms seamlessly.</li><li><strong>Dynamic Content Delivery:</strong> Headless CMS integration for instant updates to menus and seasonal promotions.</li><li><strong>Optimized Performance:</strong> Next.js and edge caching for sub-second load times.</li></ul>",
-    role: "Lead Full-Stack Consultant",
-    year: "2025",
-    tags: ["F&B", "VIP Booking", "Web"],
-    techStack: ["Next.js", "TypeScript", "TailwindCSS", "PostgreSQL", "Prisma"],
-    liveLink: "https://tifakafe.co.id",
-    accentGradient: "linear-gradient(135deg, #8B5A2B, #301b0d)",
-    image: "/tifakafe_logo.png",
-    invertLogo: true
-  },
   alpha: {
     title: "OrionOrbit",
     subtitle: "Multi-Tenant F&B ERP & Omnichannel POS",
     description: "Architected a comprehensive Enterprise Resource Planning (ERP) and Point of Sale platform from the ground up to power multi-tenant food & beverage operations. Built on a resilient offline-first sync engine (CouchDB/PouchDB), the system guarantees zero downtime for in-store operations.<br><br>Going far beyond standard order processing, the platform serves as the central nervous system for the business. It features a complete financial ledger (Cashflow, Expenses, Drawer Deposits), a fully-integrated Human Resources module (Payroll, Shift Tracking, Cash Advances), and complex Multi-Tenant revenue routing for sub-vendors.<br><br>The core ERP seamlessly integrates with a real-time Kitchen Display System (KDS) and a dynamic public-facing web platform, providing a true end-to-end operational hub for modern hospitality management.",
-    role: "Lead Full-Stack Consultant",
+    role: "Founder & Principal Architect",
     year: "2025",
-    tags: ["ERP", "Omnichannel POS", "Multi-Tenant", "Enterprise"],
+    tags: ["ERP", "POS", "SaaS", "Multi-Tenant"],
     techStack: ["React 19", "TypeScript", "Go", "CouchDB", "PouchDB", "Tailwind CSS"],
     architectureMermaid: `
       graph LR
@@ -58,7 +32,7 @@ export const projectsData = {
         Gateway <-->|Distributed Read/Write| Couch
         Gateway -->|Webhooks| Int
     `,
-    liveLink: "",
+    liveLink: "#",
     accentGradient: "linear-gradient(135deg, #0284c7, #0c4a6e)",
     image: "/orion_logo_white.png",
     invertLogo: false
@@ -66,8 +40,8 @@ export const projectsData = {
   aegis: {
     title: "Aegis Meridian",
     subtitle: "Comprehensive Legal Case Management & Law Firm ERP",
-    description: "Architected and developed a bespoke, end-to-end Legal Practice Management system for TS Lawfirm. Designed to digitize the entire lifecycle of legal operations, from initial client onboarding to final case resolution and financial settlement.<br><br><strong>System Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Matter & Journey Tracking:</strong> Centralized dashboard for tracking legal 'Matters', recording detailed case progressions ('Journeys'), and managing internal/external stakeholders.</li><li><strong>Legal Accounting Engine:</strong> Built-in financial module handling case budgets, operational expenses, and automated calculation of internal/external fee shares.</li><li><strong>Event Synchronization:</strong> Integrated calendar system with Google Calendar sync to ensure no court date or client meeting is ever missed.</li><li><strong>Role-Based Access Control:</strong> Strict security matrix ensuring sensitive case files and financial data are only accessible to authorized partners and associates.</li></ul>",
-    role: "Lead Full-Stack Consultant",
+    description: "Architected and developed a bespoke, end-to-end Legal Practice Management system for a corporate law firm. Designed to digitize the entire lifecycle of legal operations, from initial client onboarding to final case resolution and financial settlement.<br><br><strong>System Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Matter & Journey Tracking:</strong> Centralized dashboard for tracking legal 'Matters', recording detailed case progressions ('Journeys'), and managing internal/external stakeholders.</li><li><strong>Legal Accounting Engine:</strong> Built-in financial module handling case budgets, operational expenses, and automated calculation of internal/external fee shares.</li><li><strong>Event Synchronization:</strong> Integrated calendar system with Google Calendar sync to ensure no court date or client meeting is ever missed.</li><li><strong>Role-Based Access Control:</strong> Strict security matrix ensuring sensitive case files and financial data are only accessible to authorized partners and associates.</li></ul>",
+    role: "Founder & Principal Architect",
     year: "2026",
     tags: ["ERP", "LegalTech", "Case Management", "Accounting"],
     techStack: ["Next.js", "TypeScript", "React 19", "Prisma", "SQLite", "JWT Auth"],
@@ -92,10 +66,36 @@ export const projectsData = {
         API -->|Query| ORM
         ORM <-->|Read/Write| DB
     `,
-    liveLink: "",
+    liveLink: "#",
     accentGradient: "linear-gradient(135deg, #4f46e5, #1e1b4b)",
     image: "/aegis_logo.png",
     invertLogo: false
+  },
+  dboss: {
+    title: "D'Boss Coffee",
+    subtitle: "A modern digital presence and QRIS ordering system for a premium cafe in Subang.",
+    description: "Architected a high-performance web platform for D'Boss Coffee featuring a seamless 'Scan & Pay' flow (QRIS & Midtrans) so customers can order instantly from their tables.<br><br><strong>Architecture Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Real-time Sync:</strong> Live CouchDB database syncs directly with the physical café POS for instant price and inventory updates.</li><li><strong>Edge Performance:</strong> Next.js Incremental Static Regeneration (ISR) ensures instant page loads without sacrificing data accuracy.</li><li><strong>Millisecond Validation:</strong> Live inventory checks fire instantly before checkout, ensuring a flawless cart-to-kitchen pipeline.</li></ul>",
+    role: "Lead Full-Stack Consultant",
+    year: "2026",
+    tags: ["F&B", "QRIS", "POS", "Web"],
+    techStack: ["React", "TypeScript", "Next.js", "Vite", "CouchDB"],
+    liveLink: "https://dbosscoffee.co.id",
+    accentGradient: "linear-gradient(135deg, #d4af37, #8a6327)",
+    image: "/dboss_logo_transparent.png",
+    invertLogo: true
+  },
+  tifakafe: {
+    title: "Tifa Kafe",
+    subtitle: "A premium digital presence and VIP booking platform in Medan.",
+    description: "Designed a high-performance web platform for Tifa Kafe in Medan, blending a premium aesthetic with robust functionality.<br><br><strong>Technical Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>VIP Reservation Engine:</strong> Custom booking system allowing guests to secure VIP rooms seamlessly.</li><li><strong>Dynamic Content Delivery:</strong> Headless CMS integration for instant updates to menus and seasonal promotions.</li><li><strong>Optimized Performance:</strong> Next.js and edge caching for sub-second load times.</li></ul>",
+    role: "Lead Full-Stack Consultant",
+    year: "2025",
+    tags: ["F&B", "VIP", "Web"],
+    techStack: ["Next.js", "TypeScript", "TailwindCSS", "PostgreSQL", "Prisma"],
+    liveLink: "https://tifakafe.co.id",
+    accentGradient: "linear-gradient(135deg, #8B5A2B, #301b0d)",
+    image: "/tifakafe_logo.png",
+    invertLogo: true
   },
   pegadaian: {
     title: "Pegadaian Digital Syariah",
@@ -103,7 +103,7 @@ export const projectsData = {
     description: "Started by contributing to the legacy Pegadaian Digital Syariah application before spearheading a massive architectural revamp. Led the migration of legacy Java codebases to modern Kotlin with Coroutines, and transitioned iOS development from UIKit to Swift, while enforcing strict clean code principles and MVVM architecture. As Mobile Team Lead, I personally drove the engineering culture by conducting rigorous Merge Request reviews.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Fintech Security:</strong> Hardened application security by implementing SSL Certificate Pinning, Root/Jailbreak detection, Biometric Auth, and AES/SHA-256 data encryption.</li><li><strong>Design Systems:</strong> Engineered a reusable custom UI Kit based strictly on the internal UI/UX guidelines to drastically accelerate feature delivery.</li><li><strong>DevOps & Quality:</strong> Deployed microservices via Managed OCP (OpenShift Container Platform) and integrated SonarQube directly into the Jenkins CI/CD pipeline to automate code analysis.</li><li><strong>Data & Growth:</strong> Enabled the full Firebase ecosystem (Crashlytics, Analytics, Remote Config, A/B testing) alongside MoEngage for targeted marketing automation.</li></ul>",
     role: "Mobile App Developer - Mobile Team Lead",
     year: "2021 - 2024",
-    tags: ["Fintech", "Sharia-compliant", "Gold Investment"],
+    tags: ["Fintech", "Syariah", "Gold"],
     techStack: ["Native Android", "iOS", "Spring Boot", "Microservices", "PostgreSQL", "Jenkins", "OpenShift"],
     liveLink: "https://pegadaiansyariah.co.id/web/",
     accentGradient: "linear-gradient(135deg, #008f39, #004d1a)",
@@ -116,7 +116,7 @@ export const projectsData = {
     description: "Developed and maintained Triing by Pegadaian, a modern digital lifestyle application designed to engage users through gamification and integrated financial services.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Gamification:</strong> Built interactive features and rewards systems to increase daily user engagement.</li><li><strong>Seamless Integration:</strong> Connected with core Pegadaian services to allow easy access to investments and loans.</li><li><strong>Modern Architecture:</strong> Ensured a scalable and responsive backend to handle concurrent users during campaigns.</li></ul>",
     role: "Mobile Lead Developer",
     year: "2024 - 2025",
-    tags: ["Fintech", "Lifestyle App", "Digital Ecosystem", "High Availability"],
+    tags: ["Fintech", "Lifestyle", "App"],
     techStack: ["Native Android", "iOS", "Spring Boot", "Microservices"],
     liveLink: "https://pegadaian.co.id/tring",
     playStoreLink: "https://play.google.com/store/apps/details?id=com.pegadaiandigital&hl=id",
@@ -131,7 +131,7 @@ export const projectsData = {
     description: "Built the backend infrastructure for Agen Pegadaian Syariah, empowering individuals and small businesses to become official agents and offer Sharia-compliant financial services.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Agent Dashboard:</strong> Developed a comprehensive dashboard for agents to track transactions, commissions, and performance.</li><li><strong>Secure Transactions:</strong> Implemented robust security protocols for handling third-party financial transactions.</li><li><strong>API Gateway:</strong> Designed the API architecture to serve thousands of agents nationwide efficiently.</li></ul>",
     role: "Mobile App Developer",
     year: "2021 - 2022",
-    tags: ["Fintech", "Agent Dashboard", "B2B"],
+    tags: ["Fintech", "B2B", "Dashboard"],
     techStack: ["Native Android", "Spring Boot", "Microservices", "PostgreSQL"],
     liveLink: "https://pegadaian.co.id",
     playStoreLink: "https://play.google.com/store/apps/details?id=co.pegadaian.syariah.agen&hl=id",
@@ -145,6 +145,7 @@ export const projectsData = {
     description: "Developed BabyScheduler, an intuitive web application designed to help new parents meticulously track and manage their infant's sleep, feeding, and care schedules.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Routine Tracking:</strong> Built a comprehensive dashboard for real-time logging of daily baby activities.</li><li><strong>Smart Reminders:</strong> Implemented customizable alerts for feeding and sleep cycles.</li><li><strong>Data Visualization:</strong> Created intuitive charts to help parents understand patterns in their child's development.</li></ul>",
     role: "Full Stack Developer",
     year: "2026",
+    tags: ["React", "Web"],
     techStack: ["React", "Node.js", "Express", "MongoDB"],
     liveLink: "https://orionmonitor.vercel.app/",
     accentGradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
@@ -170,7 +171,7 @@ export const projectsData = {
     description: "Developed Studious, an integrated college management application designed to streamline academic operations. The platform provides robust tools for administrators and students to manage daily educational workflows.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Attendance Tracking:</strong> Engineered a reliable module for real-time attendance logging and academic reporting.</li><li><strong>Schedule Management:</strong> Built an intuitive class scheduling system for seamless course management.</li><li><strong>Mobile Integration:</strong> Expanded the enterprise web application into a native mobile client for on-the-go access.</li></ul>",
     role: "Mobile Application Developer",
     year: "2020",
-    tags: ["Education", "Management System", "Mobile App"],
+    tags: ["Education", "Mobile App"],
     techStack: ["Android", "Java", "REST APIs", "SQLite"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
@@ -179,11 +180,11 @@ export const projectsData = {
   },
   smarttb: {
     title: "SmartTB",
-    subtitle: "Tuberculosis data collection app for Nias Regency.",
+    subtitle: "Tuberculosis data collection app for Nias Regency with offline-first capabilities.",
     description: "Developed SmartTB, a dedicated data collection application designed to track and manage tuberculosis cases in the Nias Regency. The app empowers field workers to seamlessly gather patient data even in remote areas with poor connectivity.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Offline-First Architecture:</strong> Built a robust local caching system that allows users to collect data without internet access.</li><li><strong>Auto-Synchronization:</strong> Engineered background services that automatically push cached data to the central server the moment a connection is re-established.</li><li><strong>Targeted Deployment:</strong> Specifically tailored for healthcare workers operating in Nias Regency.</li></ul>",
     role: "Android Developer",
     year: "2019",
-    tags: ["Healthcare", "Offline-First", "Data Collection"],
+    tags: ["Healthcare", "Data Collection"],
     techStack: ["Android", "Java", "SQLite", "REST APIs"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #ef4444, #991b1b)",
@@ -195,17 +196,17 @@ export const projectsData = {
 export const experiencesData = [
   {
     id: "gingetsu",
-    role: "Independent Technical Consultant",
-    company: "GingetsuOrbit",
+    role: "Founder & Principal Solutions Architect",
+    company: "PT Gingetsu Orbit System",
     date: "Oct 2025 - Present",
-    shortDesc: "Architected and deployed custom POS and ERP systems. Engineered robust backend services (Go/React) with offline-first synchronization.",
+    shortDesc: "Leading an incorporated technology consultancy & software studio. Architecting enterprise ERP systems (LegalTech, Multi-Tenant F&B POS) and resilient backend/mobile platforms.",
     responsibilities: [
-      "System Architecture & Development: Architected and deployed OrionOrbit, a custom Point of Sale (POS) and Enterprise Resource Planning (ERP) system, alongside a customer-facing landing page for a commercial client in the food and beverage industry.",
-      "Full-Stack Engineering & Payment Integration: Engineered robust backend services utilizing Go and a responsive React frontend. Successfully integrated a secure online payment gateway into the web platform, synchronizing digital transactions directly with the POS application in real-time to ensure unified financial tracking.",
-      "Offline-First Data Synchronization: Designed and implemented a resilient, offline-first data synchronization layer leveraging CouchDB and PouchDB, guaranteeing continuous operational uptime and zero data loss during network disruptions.",
-      "Operational Problem Solving: Diagnosed field-level user bottlenecks and engineered targeted operational fixes, directly translating on-the-ground feedback into actionable system improvements to streamline adoption."
+      "Enterprise LegalTech ERP (Aegis Meridian): Architected and delivered a comprehensive Legal Case Management and Law Firm ERP system utilizing Next.js App Router (React 19), TypeScript, and Prisma, featuring a custom legal accounting engine for partner fee-share settlements and RBAC security.",
+      "Multi-Tenant F&B ERP & POS (OrionOrbit): Architected and deployed a full-scale Point of Sale and Enterprise Resource Planning ecosystem (HR payroll, financial ledger, real-time Kitchen Display System) alongside high-conversion digital storefronts.",
+      "Full-Stack Engineering & Payment Integration: Engineered high-concurrency backend services in Go and Next.js, integrating live QRIS/Midtrans payment gateways that synchronize digital table orders directly with physical in-store POS terminals in real time.",
+      "Offline-First Distributed Sync: Designed resilient, offline-first data synchronization layers leveraging CouchDB and PouchDB, guaranteeing 100% operational continuity and zero transaction loss during internet outages."
     ],
-    relatedProjects: ["aegis", "alpha", "dboss", "tifakafe", "babysheduler", "soiltracker"]
+    relatedProjects: ["alpha", "aegis", "dboss", "tifakafe", "babysheduler", "soiltracker"]
   },
   {
     id: "lead_pegadaian",
