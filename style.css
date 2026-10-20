@@ -351,9 +351,74 @@ a:hover {
   text-align: center;
   color: var(--text-muted);
   max-width: 640px;
-  margin: 0 auto 3rem auto;
+  margin: 0 auto 2rem auto;
   font-size: 1.05rem;
   line-height: 1.6;
+}
+
+.projects-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-pill {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.filter-pill:hover {
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-pill.active {
+  background: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+  font-weight: 600;
+}
+
+.bento-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bento-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.bento-arrow:hover {
+  background: var(--text-main);
+  color: var(--bg-color);
 }
 
 .project-grid {
@@ -385,25 +450,25 @@ a:hover {
   scroll-snap-align: start;
 }
 
-/* Large Featured Items (2x2) — 3n+1 packs 7 flagship cards into [2x2][1x1/1x1][2x2][1x1/1x1][2x2] with zero empty cells */
-.project-grid .project-card:nth-child(3n+1) {
+/* Large Featured Items (2x2) — 4n+1 packs 11 cards into 3 large (12 cells) + 8 small (8 cells) = 20 cells (10 full columns) */
+.project-grid:not(.full-grid-mode) .project-card:nth-child(4n+1) {
   grid-column: span 2;
   grid-row: span 2;
 }
 
-.project-grid .project-card:nth-child(3n+1) .project-image {
+.project-grid:not(.full-grid-mode) .project-card:nth-child(4n+1) .project-image {
   min-height: 300px;
   flex-grow: 1;
   flex-shrink: 0;
 }
 
 /* Standard Items (1x1) */
-.project-grid .project-card:not(:nth-child(3n+1)) .project-image {
+.project-grid:not(.full-grid-mode) .project-card:not(:nth-child(4n+1)) .project-image {
   height: 160px;
   flex-shrink: 0;
 }
 
-.project-grid .project-card:not(:nth-child(3n+1)) .project-info p {
+.project-grid:not(.full-grid-mode) .project-card:not(:nth-child(4n+1)) .project-info p {
   margin-bottom: 0.75rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -411,27 +476,64 @@ a:hover {
   overflow: hidden;
 }
 
+/* Expanded Full Grid Mode (View All at Once) */
+.project-grid.full-grid-mode {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  overflow-x: visible;
+}
+
+.project-grid.full-grid-mode .project-image {
+  height: 190px;
+  flex-shrink: 0;
+}
+
 /* Mobile Horizontal Layout tweaks */
 @media (max-width: 768px) {
-  .project-grid {
+  .projects-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .project-filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .project-filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill {
+    white-space: nowrap;
+  }
+
+  .bento-nav-controls {
+    justify-content: flex-end;
+  }
+
+  .project-grid:not(.full-grid-mode) {
     grid-template-rows: repeat(2, 280px);
     grid-auto-columns: 85vw;
   }
   
-  .project-grid .project-card:nth-child(3n+1) {
+  .project-grid:not(.full-grid-mode) .project-card:nth-child(4n+1) {
     grid-column: span 1;
     grid-row: span 2;
   }
 
-  .project-grid .project-card:not(:nth-child(3n+1)) .project-info p {
+  .project-grid:not(.full-grid-mode) .project-card:not(:nth-child(4n+1)) .project-info p {
     display: none;
   }
   
-  .project-grid .project-card:not(:nth-child(3n+1)) .project-info {
+  .project-grid:not(.full-grid-mode) .project-card:not(:nth-child(4n+1)) .project-info {
     padding: 1rem;
   }
   
-  .project-grid .project-card:not(:nth-child(3n+1)) h3 {
+  .project-grid:not(.full-grid-mode) .project-card:not(:nth-child(4n+1)) h3 {
     font-size: 1rem;
     margin-bottom: 0.5rem;
   }

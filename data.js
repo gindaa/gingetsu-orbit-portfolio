@@ -5,6 +5,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Built to eliminate the three biggest profit killers in multi-outlet F&B operations: lost sales during internet outages, cashier revenue leakage, and disconnected spreadsheets between the kitchen, finance, and HR.<br><br><strong>How It Grows the Business:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>100% Offline Cashier Continuity:</strong> Powered by a local-first sync engine (CouchDB/PouchDB), cashiers keep taking orders and printing receipts even when store Wi-Fi drops—syncing automatically the second connectivity returns.</li><li><strong>Real-Time Kitchen & Sub-Vendor Routing:</strong> Orders route instantaneously to the Kitchen Display System (KDS) and automatically split revenue across multi-tenant food court vendors without manual reconciliation.</li><li><strong>Unified Financial Ledger & HR Payroll:</strong> Tracks drawer deposits, operational expenses, staff shift attendance, cash advances, and automated payroll in one central command center.</li></ul>",
     role: "Founder & Principal Architect",
     year: "2025",
+    categories: ["erp", "fnb"],
     tags: ["Custom ERP", "Offline-First POS", "F&B Growth"],
     techStack: ["React 19", "TypeScript", "Go", "CouchDB", "PouchDB", "Tailwind CSS"],
     architectureMermaid: `
@@ -43,6 +44,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Replaced fragmented spreadsheets and manual billing in a corporate law firm with a single, auditable Practice Management ERP—eliminating billable leakage, automating partner fee-share splits, and ensuring zero missed court deadlines.<br><br><strong>How It Elevates Firm Operations:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>End-to-End Matter & Journey Tracking:</strong> Gives Managing Partners real-time visibility into every active legal matter, milestone progression, and stakeholder assignment from client onboarding to case settlement.</li><li><strong>Automated Legal Accounting & Fee Splits:</strong> Tracks case budgets, operational disbursements, and automatically calculates complex internal/external partner fee-share settlements with full audit trails.</li><li><strong>Court & Client Calendar Sync:</strong> Bi-directional Google Calendar synchronization ensures every court hearing, filing deadline, and client briefing is automatically scheduled across the legal team.</li><li><strong>Strict Partner-Level Access Control:</strong> Role-Based Access Control (RBAC) isolates confidential client dossiers and sensitive financial ledgers by partner and associate clearance levels.</li></ul>",
     role: "Founder & Principal Architect",
     year: "2026",
+    categories: ["erp"],
     tags: ["LegalTech ERP", "Case & Billing", "B2B Automation"],
     techStack: ["Next.js", "TypeScript", "React 19", "Prisma", "PostgreSQL", "RBAC & JWT"],
     architectureMermaid: `
@@ -77,6 +79,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Transformed peak-hour café operations in Subang by allowing guests to scan, order, and pay via QRIS directly from their tables—eliminating counter queues, reducing waiter workload, and routing paid orders straight to the kitchen POS.<br><br><strong>How It Drives Revenue:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Frictionless Scan-to-Pay (QRIS & Midtrans):</strong> Customers browse the live menu and complete payment in seconds from their phone without waiting for staff or physical bill settlement.</li><li><strong>Direct-to-POS Synchronization:</strong> Every digital order and menu price syncs live with the in-store POS database, removing manual cashier re-entry and order mistakes.</li><li><strong>Zero Sold-Out Refunds:</strong> Millisecond stock validation checks live kitchen inventory right before payment so guests never pay for an out-of-stock item.</li></ul>",
     role: "Lead Full-Stack Consultant",
     year: "2026",
+    categories: ["fnb"],
     tags: ["QRIS Ordering", "POS Sync", "F&B Revenue"],
     techStack: ["Next.js", "React", "TypeScript", "Midtrans QRIS", "CouchDB"],
     liveLink: "https://dbosscoffee.co.id",
@@ -90,6 +93,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Elevated a flagship hospitality venue in Medan with a 24/7 online VIP room booking engine and digital menu experience—capturing corporate and group reservations automatically without manual WhatsApp admin delays.<br><br><strong>How It Grows Bookings:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Automated VIP Room Reservations:</strong> Guests check availability and lock in high-ticket VIP rooms online, reducing booking drop-off outside business hours.</li><li><strong>Instant Promo & Menu Publishing:</strong> Management updates seasonal campaigns, event packages, and pricing in real time without needing developer intervention.</li><li><strong>Sub-Second Mobile Load Speeds:</strong> Engineered for instant loading on mobile networks to maximize conversion from Instagram and Google Maps traffic.</li></ul>",
     role: "Lead Full-Stack Consultant",
     year: "2025",
+    categories: ["fnb"],
     tags: ["VIP Booking", "Hospitality", "Conversion"],
     techStack: ["Next.js", "TypeScript", "TailwindCSS", "PostgreSQL", "Prisma"],
     liveLink: "https://tifakafe.co.id",
@@ -103,6 +107,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Spearheaded the native mobile modernization of Indonesia's flagship Sharia pawn and gold-investment platform—delivering <strong>99%+ crash-free sessions</strong>, a <strong>40% drop in post-release defects</strong>, and bank-grade transaction security across a national user base.<br><br><strong>Enterprise Engineering Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Full Legacy Modernization:</strong> Led the architectural migration from legacy Java/UIKit to modern Kotlin Coroutines and Swift (MVVM), dramatically improving checkout speed and app responsiveness.</li><li><strong>Fintech-Grade Security:</strong> Hardened financial transactions with SSL Certificate Pinning, Root/Jailbreak detection, Biometric Authentication, and AES/SHA-256 encryption.</li><li><strong>Marketing & Retention Automation:</strong> Integrated Firebase Analytics, Remote Config, and MoEngage to power targeted customer lifecycle campaigns and A/B tested conversion flows.</li><li><strong>Zero-Rollback CI/CD Delivery:</strong> Automated code quality gates via SonarQube, Jenkins, and OpenShift Container Platform (OCP).</li></ul>",
     role: "Mobile Team Lead",
     year: "2021 - 2024",
+    categories: ["fintech"],
     tags: ["Enterprise Fintech", "99%+ Crash-Free", "iOS & Android"],
     techStack: ["Native Android", "Swift (iOS)", "Spring Boot", "Microservices", "PostgreSQL", "OpenShift"],
     liveLink: "https://pegadaiansyariah.co.id/web/",
@@ -116,6 +121,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Defined the core native mobile architecture for Pegadaian's next-generation lifestyle and financial super-app—combining gamified daily rewards with instant access to gold investments and financing to drive repeat customer retention.<br><br><strong>Key Outcomes:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Retention Through Gamification:</strong> Engineered interactive reward loops that incentivize daily app opens and cross-sell core financial products.</li><li><strong>Native Performance at National Scale:</strong> Secured executive buy-in for a 100% Native (Swift/Kotlin) architecture, guaranteeing smooth UI performance and rock-solid stability during high-traffic national campaigns.</li><li><strong>Unified Ecosystem Access:</strong> Seamlessly connected lifestyle features with core loan, pawn, and gold-saving ledgers.</li></ul>",
     role: "Lead Mobile Developer",
     year: "2024 - 2025",
+    categories: ["fintech"],
     tags: ["Super-App", "Customer Retention", "Fintech"],
     techStack: ["Native Android", "Swift (iOS)", "Spring Boot", "Microservices"],
     liveLink: "https://pegadaian.co.id/tring",
@@ -131,6 +137,7 @@ export const projectsData = {
     description: "<strong>Business Impact:</strong> Engineered the mobile and API platform that empowers thousands of independent businesses and individuals across Indonesia to operate as official branchless Pegadaian Syariah agents—expanding transaction volume without physical branch overhead.<br><br><strong>Key Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Real-Time Commission & Volume Tracking:</strong> Gives partner agents instant visibility into daily transaction payouts, fee earnings, and customer history.</li><li><strong>High-Security Third-Party Processing:</strong> Enforced strict KYC, data consent, and encrypted transaction signing for partner-led gold and financing transactions.</li><li><strong>High-Throughput API Gateway:</strong> Built to serve thousands of concurrent field agents nationwide with minimal latency.</li></ul>",
     role: "Mobile Application Developer",
     year: "2021 - 2023",
+    categories: ["fintech", "erp"],
     tags: ["B2B Distribution", "Agent Network", "Fintech"],
     techStack: ["Native Android", "Spring Boot", "Microservices", "PostgreSQL"],
     liveLink: "https://pegadaian.co.id",
@@ -141,59 +148,59 @@ export const projectsData = {
   },
   babysheduler: {
     title: "BabyScheduler",
-    subtitle: "A smart scheduling and tracking platform for infant care routines.",
-    description: "Developed BabyScheduler, an intuitive web application designed to help new parents meticulously track and manage their infant's sleep, feeding, and care schedules.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Routine Tracking:</strong> Built a comprehensive dashboard for real-time logging of daily baby activities.</li><li><strong>Smart Reminders:</strong> Implemented customizable alerts for feeding and sleep cycles.</li><li><strong>Data Visualization:</strong> Created intuitive charts to help parents understand patterns in their child's development.</li></ul>",
+    subtitle: "Consumer Health & Infant Routine Analytics Web Application",
+    description: "<strong>Business Impact:</strong> Designed and launched a consumer health web platform that replaces fragmented paper logs for new parents with real-time sleep, feeding, and developmental analytics.<br><br><strong>Key Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Real-Time Care Telemetry:</strong> One-tap logging dashboard for feeding intervals, sleep cycles, and daily care routines across multiple caregivers.</li><li><strong>Automated Smart Alerts:</strong> Configurable scheduling engine that notifies parents before upcoming feeding and rest windows.</li><li><strong>Developmental Pattern Analytics:</strong> Visualizes longitudinal health and sleep trends to help parents and pediatricians spot routine anomalies early.</li></ul>",
     role: "Full Stack Developer",
     year: "2026",
-    tags: ["React", "Web"],
+    categories: ["verticals"],
+    tags: ["HealthTech", "Analytics", "Web App"],
     techStack: ["React", "Node.js", "Express", "MongoDB"],
     liveLink: "https://orionmonitor.vercel.app/",
     accentGradient: "linear-gradient(135deg, #8b5cf6, #6d28d9)",
     image: "/babyscheduler_line_art.png",
-    invertLogo: false,
-    archived: true
+    invertLogo: false
   },
   soiltracker: {
     title: "Soil Tracker",
-    subtitle: "Agricultural tracking and management system.",
-    description: "Consulted on and contributed to the development of Soil Tracker, a platform designed for monitoring and managing soil metrics.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>System Architecture:</strong> Provided technical consulting to shape the project's foundation.</li><li><strong>Open Source:</strong> Available on GitHub for community collaboration.</li></ul>",
-    role: "IT Consultant",
+    subtitle: "AgriTech Field Telemetry & Land Operations Management Platform",
+    description: "<strong>Business Impact:</strong> Architected the technical foundation for an agricultural field-monitoring and logistics platform—enabling plantation operators to digitize soil quality telemetry and field transport workflows.<br><br><strong>Key Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Field Metric Digitization:</strong> Centralizes soil condition records and land-plot diagnostics for data-driven crop management.</li><li><strong>Modular System Architecture:</strong> Designed a clean, extensible web architecture ready for IoT sensor ingestion and multi-site field reporting.</li></ul>",
+    role: "IT & Architecture Consultant",
     year: "2025",
-    tags: ["AgriTech", "Tracker"],
-    techStack: ["System Architecture", "Web Technologies"],
+    categories: ["verticals", "erp"],
+    tags: ["AgriTech", "Field Telemetry", "ERP"],
+    techStack: ["TypeScript", "React", "REST APIs", "System Architecture"],
     liveLink: "https://github.com/gindaa/soil-tracker",
     accentGradient: "linear-gradient(135deg, #10b981, #047857)",
     image: "/soil_tracker_logo.png",
-    invertLogo: false,
-    archived: true
+    invertLogo: false
   },
   studious: {
     title: "Studious",
-    subtitle: "Comprehensive college management and student information system.",
-    description: "Developed Studious, an integrated college management application designed to streamline academic operations. The platform provides robust tools for administrators and students to manage daily educational workflows.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Attendance Tracking:</strong> Engineered a reliable module for real-time attendance logging and academic reporting.</li><li><strong>Schedule Management:</strong> Built an intuitive class scheduling system for seamless course management.</li><li><strong>Mobile Integration:</strong> Expanded the enterprise web application into a native mobile client for on-the-go access.</li></ul>",
+    subtitle: "Campus Operations ERP & Mobile Student Information System",
+    description: "<strong>Business Impact:</strong> Extended an enterprise academic management platform into a native Android mobile ERP—digitizing attendance verification, course scheduling, and student administration for higher-education institutions.<br><br><strong>Key Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Real-Time Attendance & Academic Ledger:</strong> Eliminates paper roll-calls with instant mobile attendance logging and automated administrative reporting.</li><li><strong>Dynamic Course & Room Scheduling:</strong> Synchronizes lecture timetables, faculty assignments, and exam calendars directly to student devices.</li><li><strong>Native Enterprise Mobile Client:</strong> Translated complex web ERP workflows into a fast, offline-resilient native Android experience.</li></ul>",
     role: "Mobile Application Developer",
     year: "2020",
-    tags: ["Education", "Mobile App"],
-    techStack: ["Android", "Java", "REST APIs", "SQLite"],
+    categories: ["verticals", "erp"],
+    tags: ["EdTech ERP", "Campus System", "Android"],
+    techStack: ["Native Android", "Java", "REST APIs", "SQLite"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #3b82f6, #1d4ed8)",
     image: "/studious_logo.png",
-    invertLogo: false,
-    archived: true
+    invertLogo: false
   },
   smarttb: {
     title: "SmartTB",
-    subtitle: "Tuberculosis data collection app for Nias Regency with offline-first capabilities.",
-    description: "Developed SmartTB, a dedicated data collection application designed to track and manage tuberculosis cases in the Nias Regency. The app empowers field workers to seamlessly gather patient data even in remote areas with poor connectivity.<br><br><strong>Key Highlights:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>Offline-First Architecture:</strong> Built a robust local caching system that allows users to collect data without internet access.</li><li><strong>Auto-Synchronization:</strong> Engineered background services that automatically push cached data to the central server the moment a connection is re-established.</li><li><strong>Targeted Deployment:</strong> Specifically tailored for healthcare workers operating in Nias Regency.</li></ul>",
+    subtitle: "Offline-First Public Health Field Telemetry for Nias Regency",
+    description: "<strong>Business Impact:</strong> Engineered a dedicated offline-first mobile health (mHealth) platform for tuberculosis field workers in remote areas of Nias Regency—eliminating paper data loss in zero-connectivity villages and accelerating regional health reporting.<br><br><strong>Key Capabilities:</strong><ul style='margin-top: 0.8rem; margin-left: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;'><li><strong>100% Offline Field Capture:</strong> Local SQLite persistence allows healthcare workers to record patient screenings, symptoms, and treatment adherence without cellular coverage.</li><li><strong>Automated Background Sync:</strong> Intelligently queues and transmits encrypted patient records to the central health server the moment network connectivity is detected.</li><li><strong>Built for Remote Operations:</strong> Lightweight native Android footprint optimized for low-spec field devices and intermittent 2G/3G networks.</li></ul>",
     role: "Android Developer",
     year: "2019",
-    tags: ["Healthcare", "Data Collection"],
-    techStack: ["Android", "Java", "SQLite", "REST APIs"],
+    categories: ["verticals"],
+    tags: ["Public Health", "Offline-First", "Android"],
+    techStack: ["Native Android", "Java", "SQLite Sync", "REST APIs"],
     liveLink: "",
     accentGradient: "linear-gradient(135deg, #ef4444, #991b1b)",
     image: "/smarttb_logo.png",
-    invertLogo: false,
-    archived: true
+    invertLogo: false
   }
 };
 
@@ -208,9 +215,9 @@ export const experiencesData = [
       "Corporate LegalTech ERP (Aegis Meridian): Architected an end-to-end Law Firm Practice Management and Legal Accounting platform that automates partner fee-share settlements, centralizes case tracking, and eliminates missed court deadlines.",
       "Multi-Tenant F&B ERP & Offline POS (OrionOrbit): Built a zero-downtime Point of Sale, Kitchen Display System (KDS), financial ledger, and HR payroll suite that keeps stores selling even during internet outages.",
       "Automated Table Ordering & VIP Booking Engines (D'Boss Coffee, Tifa Kafe): Delivered live QRIS table-ordering systems synced directly to kitchen POS terminals and 24/7 VIP reservation engines that accelerate table turnover and capture high-ticket bookings.",
-      "End-to-End B2B Delivery: Lead every engagement from operational workflow audit and system architecture through to production deployment and team onboarding."
+      "Vertical Consulting & R&D Systems (Soil Tracker, BabyScheduler): Architected specialized field-telemetry and consumer health analytics platforms across AgriTech and HealthTech."
     ],
-    relatedProjects: ["alpha", "aegis", "dboss", "tifakafe"]
+    relatedProjects: ["alpha", "aegis", "dboss", "tifakafe", "babysheduler", "soiltracker"]
   },
   {
     id: "lead_pegadaian",
@@ -238,5 +245,28 @@ export const experiencesData = [
       "CI/CD & Automated Quality Gates: Built automated build and unit-testing pipelines (JUnit, Jenkins, SonarQube) to protect business-critical financial releases."
     ],
     relatedProjects: ["agen_pegadaian"]
+  },
+  {
+    id: "digicorp",
+    role: "Mobile Application Developer",
+    company: "Digicorp",
+    date: "Sep 2019 - Dec 2020",
+    shortDesc: "Engineered native Android enterprise clients for campus & academic operations ERPs, optimizing stability and mobile workflow adoption.",
+    responsibilities: [
+      "Enterprise Mobile ERP (Studious): Engineered native Android clients for campus and student information systems, digitizing attendance verification and academic scheduling.",
+      "Stability & Performance Tuning: Diagnosed and resolved core memory and API bottlenecks during enterprise beta rollouts."
+    ],
+    relatedProjects: ["studious"]
+  },
+  {
+    id: "freelance",
+    role: "Independent Mobile Consultant",
+    company: "Regional Public Health & SMEs",
+    date: "Jan 2018 - Aug 2019",
+    shortDesc: "Architected offline-first Android field data collection and custom operational apps for remote regional deployments.",
+    responsibilities: [
+      "Offline-First Public Health Telemetry (SmartTB): Architected and deployed an offline-first tuberculosis tracking system for healthcare workers across Nias Regency, enabling zero-loss patient data capture in no-signal zones with automatic background sync."
+    ],
+    relatedProjects: ["smarttb"]
   }
 ];

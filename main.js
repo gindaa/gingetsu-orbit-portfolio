@@ -69,12 +69,19 @@ orbsContainer.appendChild(orb1);
 orbsContainer.appendChild(orb2);
 
 // --------------------------------------------------------
-// Render Bento Grid Projects (Single Source of Truth)
+// Render Bento Grid Projects & Industry Filter Controls
 // --------------------------------------------------------
 const bentoView = document.getElementById('bento-view');
-if (bentoView) {
+const filterContainer = document.getElementById('project-filters');
+const bentoPrev = document.getElementById('bento-prev');
+const bentoNext = document.getElementById('bento-next');
+const bentoLayoutToggle = document.getElementById('bento-layout-toggle');
+
+function renderBentoProjects(filterCategory = 'all') {
+  if (!bentoView) return;
+  bentoView.innerHTML = '';
   Object.entries(projectsData)
-    .filter(([, proj]) => !proj.archived)
+    .filter(([, proj]) => filterCategory === 'all' || (proj.categories && proj.categories.includes(filterCategory)))
     .forEach(([id, proj]) => {
       const card = document.createElement('a');
       card.href = `/project.html?id=${id}`;
@@ -93,6 +100,46 @@ if (bentoView) {
       `;
       bentoView.appendChild(card);
     });
+}
+
+if (bentoView) {
+  renderBentoProjects('all');
+
+  if (filterContainer) {
+    filterContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-pill');
+      if (!btn) return;
+      filterContainer.querySelectorAll('.filter-pill').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      renderBentoProjects(btn.dataset.filter);
+      bentoView.scrollTo({ left: 0, behavior: 'smooth' });
+    });
+  }
+
+  if (bentoPrev && bentoNext) {
+    bentoPrev.addEventListener('click', () => {
+      bentoView.scrollBy({ left: -720, behavior: 'smooth' });
+    });
+    bentoNext.addEventListener('click', () => {
+      bentoView.scrollBy({ left: 720, behavior: 'smooth' });
+    });
+  }
+
+  if (bentoLayoutToggle) {
+    bentoLayoutToggle.addEventListener('click', () => {
+      const isFullGrid = bentoView.classList.toggle('full-grid-mode');
+      bentoLayoutToggle.classList.toggle('active', isFullGrid);
+      bentoLayoutToggle.textContent = isFullGrid ? 'Carousel View' : 'View Full Grid';
+      if (bentoPrev && bentoNext) {
+        bentoPrev.style.display = isFullGrid ? 'none' : '';
+        bentoNext.style.display = isFullGrid ? 'none' : '';
+      }
+    });
+  }
 }
 
 // --------------------------------------------------------

@@ -218,7 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const pStarsMap = {};
     Object.keys(projectsData).forEach((projId) => {
       const proj = projectsData[projId];
-      if (proj.archived) return;
       // Find which experience owns this project
       let ownerExp = null;
       for (const exp of experiencesData) {

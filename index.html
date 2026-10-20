@@ -139,7 +139,21 @@
       <section id="work" class="projects">
         <div class="projects-header">
           <h2>Selected Works</h2>
-          <p class="section-subtitle">Production systems engineered to automate operations, stop revenue leakage, and accelerate customer growth.</p>
+          <p class="section-subtitle">Production systems engineered across Enterprise ERP, Fintech, Hospitality, Healthcare, EdTech, and AgriTech.</p>
+          <div class="projects-toolbar">
+            <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter projects by industry">
+              <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All Systems (11)</button>
+              <button class="filter-pill" data-filter="erp" role="tab" aria-selected="false">ERP &amp; Operations</button>
+              <button class="filter-pill" data-filter="fintech" role="tab" aria-selected="false">Fintech</button>
+              <button class="filter-pill" data-filter="fnb" role="tab" aria-selected="false">F&amp;B &amp; Hospitality</button>
+              <button class="filter-pill" data-filter="verticals" role="tab" aria-selected="false">Health, EdTech &amp; Agri</button>
+            </div>
+            <div class="bento-nav-controls">
+              <button id="bento-layout-toggle" class="filter-pill layout-toggle-btn" title="Toggle between Horizontal Carousel and Full Grid">View Full Grid</button>
+              <button id="bento-prev" class="icon-btn bento-arrow" aria-label="Scroll Left">&larr;</button>
+              <button id="bento-next" class="icon-btn bento-arrow" aria-label="Scroll Right">&rarr;</button>
+            </div>
+          </div>
         </div>
 
         <!-- Bento Grid View (Populated dynamically from data.js by main.js) -->
