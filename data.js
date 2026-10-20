@@ -34,7 +34,7 @@ export const projectsData = {
     `,
     liveLink: "#",
     accentGradient: "linear-gradient(135deg, #0284c7, #0c4a6e)",
-    image: "/orion_logo_white.png",
+    image: "/orion_logo.png",
     invertLogo: false
   },
   aegis: {
