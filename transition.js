@@ -1,12 +1,25 @@
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('page-fade-out');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   const links = document.querySelectorAll('a');
   
   links.forEach(link => {
     link.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.defaultPrevented) return;
       const href = link.getAttribute('href');
       
-      // Ignore if it's an external link, a new tab, or an anchor link on the same page
-      if (!href || href.startsWith('#') || href.startsWith('http') || link.target === '_blank') {
+      // Ignore external links, mailto/tel, anchor links, downloads, or new tabs
+      if (
+        !href ||
+        href.startsWith('#') ||
+        href.startsWith('http') ||
+        href.startsWith('mailto:') ||
+        href.startsWith('tel:') ||
+        link.target === '_blank' ||
+        link.hasAttribute('download')
+      ) {
         return;
       }
       
@@ -15,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       setTimeout(() => {
         window.location.href = link.href;
-      }, 400); // 400ms duration for the fade out
+      }, 300);
     });
   });
 });

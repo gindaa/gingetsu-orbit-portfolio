@@ -164,17 +164,17 @@
           <h2>Selected Works</h2>
           <p class="section-subtitle">Production systems engineered across Enterprise ERP, Fintech, Hospitality, Healthcare, EdTech, and AgriTech.</p>
           <div class="projects-toolbar">
-            <div class="project-filters" id="project-filters" role="tablist" aria-label="Filter projects by industry">
-              <button class="filter-pill active" data-filter="all" role="tab" aria-selected="true">All Systems (11)</button>
-              <button class="filter-pill" data-filter="erp" role="tab" aria-selected="false">ERP &amp; Operations</button>
-              <button class="filter-pill" data-filter="fintech" role="tab" aria-selected="false">Fintech</button>
-              <button class="filter-pill" data-filter="fnb" role="tab" aria-selected="false">F&amp;B &amp; Hospitality</button>
-              <button class="filter-pill" data-filter="verticals" role="tab" aria-selected="false">Health, EdTech &amp; Agri</button>
+            <div class="project-filters" id="project-filters" role="group" aria-label="Filter projects by industry">
+              <button class="filter-pill active" data-filter="all" aria-pressed="true">All Systems (11)</button>
+              <button class="filter-pill" data-filter="erp" aria-pressed="false">ERP &amp; Operations</button>
+              <button class="filter-pill" data-filter="fintech" aria-pressed="false">Fintech</button>
+              <button class="filter-pill" data-filter="fnb" aria-pressed="false">F&amp;B &amp; Hospitality</button>
+              <button class="filter-pill" data-filter="verticals" aria-pressed="false">Health, EdTech &amp; Agri</button>
             </div>
             <div class="bento-nav-controls">
-              <button id="bento-layout-toggle" class="filter-pill layout-toggle-btn" title="Toggle between Horizontal Carousel and Full Grid">View Full Grid</button>
-              <button id="bento-prev" class="icon-btn bento-arrow" aria-label="Scroll Left">&larr;</button>
-              <button id="bento-next" class="icon-btn bento-arrow" aria-label="Scroll Right">&rarr;</button>
+              <button id="bento-layout-toggle" class="filter-pill layout-toggle-btn" aria-pressed="false" title="Toggle between Horizontal Carousel and Full Grid">View Full Grid</button>
+              <button id="bento-prev" class="bento-arrow" aria-label="Scroll Left">&larr;</button>
+              <button id="bento-next" class="bento-arrow" aria-label="Scroll Right">&rarr;</button>
             </div>
           </div>
         </div>
@@ -199,7 +199,7 @@
               <span class="tier-timeline">Estimated Delivery: 2&ndash;4 Weeks</span>
             </div>
             <p class="tier-ideal">Ideal for Caf&eacute;s, Restaurants, Hospitality Venues &amp; Clinics looking to automate orders and reservations.</p>
-            <ul class="tier-features">
+            <ul class="tier-features" role="list">
               <li>Scan-to-Pay QRIS / Midtrans table ordering synced to kitchen</li>
               <li>24/7 online VIP room &amp; appointment reservation engine</li>
               <li>Self-service promo &amp; menu management dashboard</li>
@@ -217,7 +217,7 @@
               <span class="tier-timeline">Estimated Delivery: 6&ndash;12 Weeks</span>
             </div>
             <p class="tier-ideal">Ideal for Multi-Branch F&amp;B, Corporate Law Firms, Distributors &amp; Growing Enterprises replacing spreadsheets.</p>
-            <ul class="tier-features">
+            <ul class="tier-features" role="list">
               <li>Bespoke financial ledger, partner fee-splits &amp; automated billing</li>
               <li>100% offline-first POS, Kitchen Display (KDS) &amp; multi-outlet inventory</li>
               <li>HR payroll, shift attendance &amp; Role-Based Access Control (RBAC)</li>
@@ -234,7 +234,7 @@
               <span class="tier-timeline">Custom Scope / Dedicated Retainer</span>
             </div>
             <p class="tier-ideal">Ideal for Fintech, Super-Apps, National Agent Networks &amp; Legacy Systems requiring bank-grade reliability.</p>
-            <ul class="tier-features">
+            <ul class="tier-features" role="list">
               <li>100% Native iOS (Swift) &amp; Android (Kotlin) engineering</li>
               <li>Fintech-grade security (Biometrics, SSL Pinning, Root/Jailbreak defense)</li>
               <li>High-concurrency Go / Spring Boot microservices &amp; CI/CD pipelines</li>
@@ -282,8 +282,8 @@
 
           <!-- Spacecraft Details Panel -->
           <div id="exp-details" class="exp-details-panel glass space-craft-panel">
-            <button id="exp-details-close" class="hud-close-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <button id="exp-details-close" class="hud-close-btn" aria-label="Close details">
+              <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
             <div class="exp-details-header">
               <h2 id="exp-details-role"></h2>
@@ -293,7 +293,7 @@
             <div class="exp-details-body">
               <div class="hud-scanline"></div>
               <h4 class="hud-section-title">Key Impact &amp; Deliverables</h4>
-              <ul id="exp-details-responsibilities"></ul>
+              <ul id="exp-details-responsibilities" role="list"></ul>
               
               <h4 class="hud-section-title" style="margin-top: 1.5rem; display: none;" id="exp-details-projects-title">Delivered Systems</h4>
               <div id="exp-details-projects" style="gap: 1rem; margin-top: 1rem;">

@@ -103,6 +103,21 @@ function renderBentoProjects(filterCategory = 'all') {
 }
 
 if (bentoView) {
+  let userPrefersFullGrid = false;
+
+  const syncGridModeUI = (isFullGrid) => {
+    bentoView.classList.toggle('full-grid-mode', isFullGrid);
+    if (bentoLayoutToggle) {
+      bentoLayoutToggle.classList.toggle('active', isFullGrid);
+      bentoLayoutToggle.setAttribute('aria-pressed', String(isFullGrid));
+      bentoLayoutToggle.textContent = isFullGrid ? 'Carousel View' : 'View Full Grid';
+    }
+    if (bentoPrev && bentoNext) {
+      bentoPrev.style.display = isFullGrid ? 'none' : '';
+      bentoNext.style.display = isFullGrid ? 'none' : '';
+    }
+  };
+
   renderBentoProjects('all');
 
   if (filterContainer) {
@@ -111,11 +126,14 @@ if (bentoView) {
       if (!btn) return;
       filterContainer.querySelectorAll('.filter-pill').forEach(b => {
         b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
+        b.setAttribute('aria-pressed', 'false');
       });
       btn.classList.add('active');
-      btn.setAttribute('aria-selected', 'true');
-      renderBentoProjects(btn.dataset.filter);
+      btn.setAttribute('aria-pressed', 'true');
+      const category = btn.dataset.filter;
+      renderBentoProjects(category);
+      // Filtered categories (< 11 items) automatically use Full Grid so there are zero empty Bento slots
+      syncGridModeUI(category !== 'all' ? true : userPrefersFullGrid);
       bentoView.scrollTo({ left: 0, behavior: 'smooth' });
     });
   }
@@ -131,13 +149,8 @@ if (bentoView) {
 
   if (bentoLayoutToggle) {
     bentoLayoutToggle.addEventListener('click', () => {
-      const isFullGrid = bentoView.classList.toggle('full-grid-mode');
-      bentoLayoutToggle.classList.toggle('active', isFullGrid);
-      bentoLayoutToggle.textContent = isFullGrid ? 'Carousel View' : 'View Full Grid';
-      if (bentoPrev && bentoNext) {
-        bentoPrev.style.display = isFullGrid ? 'none' : '';
-        bentoNext.style.display = isFullGrid ? 'none' : '';
-      }
+      userPrefersFullGrid = !bentoView.classList.contains('full-grid-mode');
+      syncGridModeUI(userPrefersFullGrid);
     });
   }
 }
@@ -150,10 +163,69 @@ const experienceWrapper = document.getElementById('experience-wrapper');
 const expDetailsClose = document.getElementById('exp-details-close');
 
 if (timelineContainer && experienceWrapper) {
+  const selectExperience = (exp, itemEl, animateText = true) => {
+    timelineContainer.querySelectorAll('.timeline-item').forEach(el => {
+      el.classList.remove('active');
+      el.setAttribute('aria-expanded', 'false');
+    });
+    itemEl.classList.add('active');
+    itemEl.setAttribute('aria-expanded', 'true');
+
+    document.getElementById('exp-details-role').textContent = exp.role;
+    document.getElementById('exp-details-company').textContent = exp.company;
+    document.getElementById('exp-details-date').textContent = exp.date;
+    
+    const respContainer = document.getElementById('exp-details-responsibilities');
+    respContainer.innerHTML = '';
+    exp.responsibilities.forEach(r => {
+      const li = document.createElement('li');
+      respContainer.appendChild(li);
+      if (animateText) {
+        const scrambler = new TextScrambler(li);
+        scrambler.setText(r);
+      } else {
+        li.textContent = r;
+      }
+    });
+    
+    const projContainer = document.getElementById('exp-details-projects');
+    const projTitle = document.getElementById('exp-details-projects-title');
+    projContainer.innerHTML = '';
+    
+    if (exp.relatedProjects && exp.relatedProjects.length > 0) {
+      projTitle.style.display = 'flex';
+      exp.relatedProjects.forEach(projId => {
+        const proj = projectsData[projId];
+        if (proj) {
+          const card = document.createElement('a');
+          card.href = '/project.html?id=' + projId;
+          card.className = 'project-card glass';
+          card.innerHTML = `
+            <div class="project-image" style="background: ${proj.accentGradient || '#2a2a2a'}; position: relative; height: 80px; display: flex; align-items: center; justify-content: center;">
+              <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="max-width: 60%; max-height: 60%; object-fit: contain; ${proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;'}">
+            </div>
+            <div class="project-info" style="padding: 0.75rem;">
+              <h3 style="margin-bottom: 0.15rem; font-size: 0.95rem;">${proj.title}</h3>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.2;">${proj.subtitle || ''}</p>
+            </div>
+          `;
+          projContainer.appendChild(card);
+        }
+      });
+    } else {
+      projTitle.style.display = 'none';
+    }
+    
+    experienceWrapper.classList.add('split-active');
+  };
+
   // Render timeline items
-  experiencesData.forEach((exp) => {
+  experiencesData.forEach((exp, idx) => {
     const item = document.createElement('div');
     item.className = 'timeline-item glass';
+    item.setAttribute('role', 'button');
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('aria-expanded', 'false');
     item.innerHTML = `
       <div class="timeline-dot"></div>
       <div class="timeline-content">
@@ -161,62 +233,35 @@ if (timelineContainer && experienceWrapper) {
         <h4>${exp.company}</h4>
         <span class="date">${exp.date}</span>
         <p>${exp.shortDesc}</p>
+        <span class="timeline-cta">Inspect Deliverables &amp; Systems <span>&rarr;</span></span>
       </div>
     `;
     
-    // Click event to open details
-    item.addEventListener('click', () => {
-      document.getElementById('exp-details-role').textContent = exp.role;
-      document.getElementById('exp-details-company').textContent = exp.company;
-      document.getElementById('exp-details-date').textContent = exp.date;
-      
-      const respContainer = document.getElementById('exp-details-responsibilities');
-      respContainer.innerHTML = '';
-      exp.responsibilities.forEach(r => {
-        const li = document.createElement('li');
-        respContainer.appendChild(li);
-        const scrambler = new TextScrambler(li);
-        scrambler.setText(r);
-      });
-      
-      const projContainer = document.getElementById('exp-details-projects');
-      const projTitle = document.getElementById('exp-details-projects-title');
-      projContainer.innerHTML = '';
-      
-      if (exp.relatedProjects && exp.relatedProjects.length > 0) {
-        projTitle.style.display = 'block';
-        exp.relatedProjects.forEach(projId => {
-          const proj = projectsData[projId];
-          if (proj) {
-            const card = document.createElement('a');
-            card.href = '/project.html?id=' + projId;
-            card.className = 'project-card glass';
-            card.innerHTML = `
-              <div class="project-image" style="background: ${proj.accentGradient || '#2a2a2a'}; position: relative; height: 80px; display: flex; align-items: center; justify-content: center;">
-                <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="max-width: 60%; max-height: 60%; object-fit: contain; ${proj.invertLogo ? 'filter: brightness(0) invert(1); opacity: 0.8;' : 'opacity: 0.9;'}">
-              </div>
-              <div class="project-info" style="padding: 0.75rem;">
-                <h3 style="margin-bottom: 0.15rem; font-size: 0.95rem;">${proj.title}</h3>
-                <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0; line-height: 1.2;">${proj.subtitle || ''}</p>
-              </div>
-            `;
-            projContainer.appendChild(card);
-          }
-        });
-      } else {
-        projTitle.style.display = 'none';
-      }
-      
-      experienceWrapper.classList.add('split-active');
+    item.addEventListener('click', () => selectExperience(exp, item, true));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') selectExperience(exp, item, true);
+      if (e.key === ' ') e.preventDefault();
+    });
+    item.addEventListener('keyup', (e) => {
+      if (e.key === ' ') selectExperience(exp, item, true);
     });
     
     timelineContainer.appendChild(item);
+
+    // Pre-open the flagship role on desktop so visitors immediately see the interactive HUD
+    if (idx === 0 && window.innerWidth > 768) {
+      selectExperience(exp, item, false);
+    }
   });
   
   // Close details logic
   if (expDetailsClose) {
     expDetailsClose.addEventListener('click', () => {
       experienceWrapper.classList.remove('split-active');
+      timelineContainer.querySelectorAll('.timeline-item').forEach(el => {
+        el.classList.remove('active');
+        el.setAttribute('aria-expanded', 'false');
+      });
     });
   }
 }
@@ -253,8 +298,10 @@ function updateCelestialHUD() {
   moonEl.textContent = phaseName;
 }
 
-setInterval(updateCelestialHUD, 1000);
-updateCelestialHUD();
+if (document.getElementById('hud-time')) {
+  setInterval(updateCelestialHUD, 1000);
+  updateCelestialHUD();
+}
 
 // --------------------------------------------------------
 // Text Scramble Utility
