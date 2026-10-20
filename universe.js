@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Parse Skills from Systems Status list
   document.querySelectorAll('.systems-list .system-item').forEach(el => {
-    universeData.core.skills.push(el.textContent.trim());
+    universeData.core.skills.push(el.dataset.satellite || el.textContent.trim());
   });
 
   // --------------------------------------------------------
@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pStarsMap = {};
     Object.keys(projectsData).forEach((projId) => {
       const proj = projectsData[projId];
+      if (proj.archived) return;
       // Find which experience owns this project
       let ownerExp = null;
       for (const exp of experiencesData) {

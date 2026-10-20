@@ -287,6 +287,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
       iosBtn.style.display = 'none';
     }
+
+    // Direct B2B Inquiry Link
+    const inquireBtn = document.getElementById('project-inquire-link');
+    if (inquireBtn) {
+      const msg = encodeURIComponent(`Hi Gin, I reviewed the ${project.title} case study and would like to discuss building a similar system for my business.`);
+      inquireBtn.href = `https://wa.me/6287748476477?text=${msg}`;
+    }
   } else {
     // Fallback if ID is invalid
     document.getElementById('project-title').textContent = "Project Not Found";

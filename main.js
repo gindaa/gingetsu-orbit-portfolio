@@ -73,24 +73,26 @@ orbsContainer.appendChild(orb2);
 // --------------------------------------------------------
 const bentoView = document.getElementById('bento-view');
 if (bentoView) {
-  Object.entries(projectsData).forEach(([id, proj]) => {
-    const card = document.createElement('a');
-    card.href = `/project.html?id=${id}`;
-    card.className = 'project-card glass';
-    const tagsHtml = (proj.tags || []).slice(0, 3).map(t => `<span>${t}</span>`).join('');
-    card.innerHTML = `
-      <div class="project-image" style="background: ${proj.accentGradient};">
-        <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="height: 65%; width: auto; max-width: 85%; object-fit: contain;">
-      </div>
-      <div class="project-info">
-        <h3>${proj.title}</h3>
-        <p>${proj.subtitle}</p>
-        <div class="tags">${tagsHtml}</div>
-        <span class="project-link">Visit Project <span>&rarr;</span></span>
-      </div>
-    `;
-    bentoView.appendChild(card);
-  });
+  Object.entries(projectsData)
+    .filter(([, proj]) => !proj.archived)
+    .forEach(([id, proj]) => {
+      const card = document.createElement('a');
+      card.href = `/project.html?id=${id}`;
+      card.className = 'project-card glass';
+      const tagsHtml = (proj.tags || []).slice(0, 3).map(t => `<span>${t}</span>`).join('');
+      card.innerHTML = `
+        <div class="project-image" style="background: ${proj.accentGradient};">
+          <img src="${proj.image}" alt="${proj.title}" class="${proj.invertLogo ? 'invert-logo' : ''}" style="height: 65%; width: auto; max-width: 85%; object-fit: contain;">
+        </div>
+        <div class="project-info">
+          <h3>${proj.title}</h3>
+          <p>${proj.subtitle}</p>
+          <div class="tags">${tagsHtml}</div>
+          <span class="project-link">View Case Study <span>&rarr;</span></span>
+        </div>
+      `;
+      bentoView.appendChild(card);
+    });
 }
 
 // --------------------------------------------------------
